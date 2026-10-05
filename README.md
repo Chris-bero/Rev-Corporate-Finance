@@ -70,3 +70,4 @@ python3 tools/make_reference.py    # numbered formulas/abbreviations/definitions
 - Academic source of truth = the lecture slides; slide misprints are corrected
   with explicit transparency notes inside the lessons.
 
+
