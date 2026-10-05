@@ -17,7 +17,9 @@
 .sp{margin-inline-start:auto}
 .ib{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:9px;padding:6px 11px;font:inherit;font-size:13px;cursor:pointer}
 .ib:hover{background:rgba(255,255,255,.22)}
-.view{max-width:1150px;margin:0 auto;padding:20px 16px 60px}
+.view{max-width:1150px;margin:0 auto;padding:20px 16px 60px;display:block}
+.view>.card,.view>.grid,.view>h2{width:100%}
+.grid>*{min-width:0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
 .stat b{font-size:26px;color:var(--accent);display:block}
@@ -25,7 +27,7 @@
 h2.sec{font-size:18px;margin:26px 0 10px;display:flex;align-items:center;gap:10px}
 h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
-.tbl th,.tbl td{border:1px solid var(--line);padding:7px 9px;text-align:start}
+.tbl th,.tbl td{border:1px solid var(--line);padding:7px 9px;text-align:start;word-break:break-word}
 .tbl th{background:var(--accent-soft);color:var(--accent);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
 .tbl td.num,.tbl th.num{text-align:end;font-variant-numeric:tabular-nums}
 .tbl tr.click{cursor:pointer}.tbl tr.click:hover{background:var(--accent-soft)}
@@ -107,6 +109,11 @@ function pct(n,d){ return d? Math.round(100*n/d):0; }
 function doneCount(u){ return Object.keys(u.done||{}).filter(function(k){return u.done[k];}).length; }
 function norm(r){ var u=r; if(typeof u.done==="string"){ try{u.done=JSON.parse(u.done||"{}");}catch(e){u.done={};} } if(typeof u.marks==="string"){ try{u.marks=JSON.parse(u.marks||"{}");}catch(e){u.marks={};} } u.done=u.done||{}; u.marks=u.marks||{}; u.visits=Number(u.visits)||0; return u; }
 function keyOf(n){ return String(n).trim().toLowerCase(); }
+function fmtDate(v){ if(!v) return "—"; var s=String(v); var m=s.match(/(\d{4}-\d{2}-\d{2})/); if(m) return m[1];
+  var mo={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
+  var m2=s.match(/([A-Z][a-z]{2}) (\d{1,2}) (\d{4})/);
+  if(m2 && mo[m2[1]]) return m2[3]+"-"+mo[m2[1]]+"-"+(m2[2].length<2?"0"+m2[2]:m2[2]);
+  var d=new Date(s); return isNaN(d.getTime())? s.slice(0,10) : d.toISOString().slice(0,10); }
 function load(cb){
   fetch(SCRIPT_URL + "?action=list").then(function(r){ return r.json(); }).then(function(res){
     if(res && res.ok){ DATA = res.students.map(norm); cb(true); } else { DATA=null; cb(false); }
@@ -144,7 +151,7 @@ function table(){
   h+='<div style="overflow-x:auto"><table class="tbl"><tr><th>'+t("name")+'</th><th class="num">'+t("visits")+'</th><th>'+t("progress")+'</th><th class="num">'+t("lessons")+'</th><th>'+t("last")+'</th><th>'+t("reg")+'</th></tr>';
   rows.forEach(function(u){
     var dc=doneCount(u);
-    h+='<tr class="click" data-stu="'+keyOf(u.name)+'"><td><b>'+u.name+'</b></td><td class="num">'+u.visits+'</td><td><div style="display:flex;gap:8px;align-items:center"><div class="bar" style="width:80px"><div class="fill" style="width:'+pct(dc,LESSONS.length)+'%"></div></div>'+pct(dc,LESSONS.length)+'%</div></td><td class="num">'+dc+'/'+LESSONS.length+'</td><td>'+(u.lastVisit||"—")+'</td><td>'+(u.created||"—")+'</td></tr>';
+    h+='<tr class="click" data-stu="'+keyOf(u.name)+'"><td><b>'+u.name+'</b></td><td class="num">'+u.visits+'</td><td><div style="display:flex;gap:8px;align-items:center"><div class="bar" style="width:80px"><div class="fill" style="width:'+pct(dc,LESSONS.length)+'%"></div></div>'+pct(dc,LESSONS.length)+'%</div></td><td class="num">'+dc+'/'+LESSONS.length+'</td><td>'+fmtDate(u.lastVisit)+'</td><td>'+fmtDate(u.created)+'</td></tr>';
   });
   return h+'</table></div>'+(detail()||"")+'</div>';
 }

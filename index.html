@@ -179,10 +179,15 @@ details.rev .in{padding:4px 16px 14px}
   #menuBtn{display:block}
   .hero{padding:26px 22px}
 }
+[dir="rtl"] p,[dir="rtl"] li,[dir="rtl"] .f,[dir="rtl"] .ans,[dir="rtl"] td,[dir="rtl"] th,[dir="rtl"] .step,[dir="rtl"] .where{unicode-bidi:plaintext}
+[dir="rtl"] .f{text-align:left}
+[dir="rtl"] .flip{display:inline-block;transform:scaleX(-1)}
+[dir="rtl"] .crumbs span{display:inline-block;transform:scaleX(-1)}
 @media print{.topbar,.tabs,.lessonnav,.bookmark{display:none}}
 </style>
 </head>
 <body>
+<noscript><p style="padding:20px;font-weight:700">This site requires JavaScript to run. · هذا الموقع يتطلب تفعيل جافاسكربت ليعمل.</p></noscript>
 <a class="skip" href="#view">Skip to content</a>
 <header class="topbar">
   <div class="tb-in">
@@ -1121,6 +1126,10 @@ window.DATA.abbrev=[
 <script>
 "use strict";
 (function(){
+window.addEventListener("error", function(e){
+  var v=document.getElementById("view");
+  if(v && v.innerHTML.trim()===""){ v.innerHTML='<div class="card" style="margin:20px;color:var(--warn)">⚠ '+String(e.message||"error")+'<br><span class="muted small">Hard-refresh (Ctrl+Shift+R) or send a screenshot of this message. · حدّث الصفحة تحديثًا قويًا أو أرسل لقطة لهذه الرسالة.</span></div>'; }
+});
 var D = window.DATA;
 /* ---------- safe storage (works even in sandboxed iframes) ---------- */
 var mem = {};
@@ -1255,12 +1264,12 @@ function pageHome(){
   h += '<h2 class="sec">'+t("progress")+'</h2><div class="card">'+bar(ad, D.lessons.length)+'</div>';
   if(state.last && LMAP[state.last]){
     var ll = LMAP[state.last];
-    h += '<h2 class="sec">'+t("continue")+'</h2><div class="card spread"><div><span class="badge">'+L(CMAP[ll.ch].title)+'</span><h3 style="display:inline">'+L(ll.title)+'</h3><div class="muted small">'+L(ll.desc)+'</div></div><a class="btn btn-accent" href="#/lesson/'+ll.id+'">'+t("resume")+' →</a></div>';
+    h += '<h2 class="sec">'+t("continue")+'</h2><div class="card spread"><div><span class="badge">'+L(CMAP[ll.ch].title)+'</span><h3 style="display:inline">'+L(ll.title)+'</h3><div class="muted small">'+L(ll.desc)+'</div></div><a class="btn btn-accent" href="#/lesson/'+ll.id+'">'+t("resume")+' <span class="flip">→</span></a></div>';
   }
   h += '<h2 class="sec">'+t("chapters")+'</h2><div class="grid">';
   D.chapters.forEach(function(c){
     var ls = lessonsOf(c), dn = doneCount(c);
-    h += '<div class="card"><div class="spread"><span class="badge">'+t("chapter")+' '+c.num+'</span><span class="small muted">'+dn+'/'+ls.length+' '+t("completed")+'</span></div><h3>'+L(c.title)+'</h3><p class="muted small">'+L(c.desc)+'</p><div style="margin:10px 0">'+bar(dn, ls.length)+'</div><a class="btn btn-soft" href="#/chapter/'+c.id+'">'+t("viewLessons")+' →</a></div>';
+    h += '<div class="card"><div class="spread"><span class="badge">'+t("chapter")+' '+c.num+'</span><span class="small muted">'+dn+'/'+ls.length+' '+t("completed")+'</span></div><h3>'+L(c.title)+'</h3><p class="muted small">'+L(c.desc)+'</p><div style="margin:10px 0">'+bar(dn, ls.length)+'</div><a class="btn btn-soft" href="#/chapter/'+c.id+'">'+t("viewLessons")+' <span class="flip">→</span></a></div>';
   });
   return h+'</div>';
 }
@@ -1268,7 +1277,7 @@ function pageChapters(){
   var h = '<h2 class="sec">'+t("allChapters")+'</h2><div class="grid">';
   D.chapters.forEach(function(c){
     var ls = lessonsOf(c), dn = doneCount(c);
-    h += '<div class="card"><span class="badge">'+t("chapter")+' '+c.num+'</span><h3>'+L(c.title)+'</h3><p class="muted small">'+L(c.desc)+'</p><div style="margin:10px 0">'+bar(dn, ls.length)+'</div><a class="btn btn-soft" href="#/chapter/'+c.id+'">'+t("viewLessons")+' →</a></div>';
+    h += '<div class="card"><span class="badge">'+t("chapter")+' '+c.num+'</span><h3>'+L(c.title)+'</h3><p class="muted small">'+L(c.desc)+'</p><div style="margin:10px 0">'+bar(dn, ls.length)+'</div><a class="btn btn-soft" href="#/chapter/'+c.id+'">'+t("viewLessons")+' <span class="flip">→</span></a></div>';
   });
   return h+'</div>';
 }
@@ -1330,7 +1339,7 @@ function pageLesson(id){
   h += '<div class="tabs" role="tablist">'+["learn","quick","formulas"].map(function(m){ return '<button role="tab" class="'+(state.mode===m?"on":"")+'" data-mode="'+m+'" aria-selected="'+(state.mode===m)+'">'+t("modes."+m)+'</button>'; }).join("")+'</div>';
   h += lessonBody(l, state.mode);
   h += '<div class="row" style="margin-top:14px"><button class="btn '+(state.done[id]?"btn-soft":"btn-accent")+'" data-done="'+id+'">'+(state.done[id]? t("unmark") : t("markDone"))+'</button></div>';
-  h += '<div class="lessonnav">'+(prev? '<a class="btn btn-soft" href="#/lesson/'+prev.id+'">← '+t("prev")+': '+L(prev.title)+'</a>' : '<span></span>')+(next? '<a class="btn btn-soft" href="#/lesson/'+next.id+'">'+t("next")+': '+L(next.title)+' →</a>' : '<span></span>')+'</div>';
+  h += '<div class="lessonnav">'+(prev? '<a class="btn btn-soft" href="#/lesson/'+prev.id+'"><span class="flip">←</span> '+t("prev")+': '+L(prev.title)+'</a>' : '<span></span>')+(next? '<a class="btn btn-soft" href="#/lesson/'+next.id+'">'+t("next")+': '+L(next.title)+' <span class="flip">→</span></a>' : '<span></span>')+'</div>';
   return h;
 }
 function pageFormulas(){
@@ -1409,7 +1418,8 @@ function pageAbbrev(){
   '<div id="aList">'+abbrevList("")+'</div>';
 }
 function pageCheat(){
-  return '<iframe id="csFrame" title="'+t("cheatTitle")+'" style="width:100%;height:calc(100vh - 150px);min-height:560px;border:1px solid var(--line);border-radius:12px;background:#fff"></iframe>';
+  var note = state.lang==="ar" ? '<div class="callout c-note"><span class="ct">ملاحظة</span>الورقة داخل الإطار أدناه هي النسخة الإنجليزية الأصلية (طبق الأصل) كما جاءت من المحاضرات.</div>' : '';
+  return note+'<iframe id="csFrame" title="'+t("cheatTitle")+'" style="width:100%;height:calc(100vh - 150px);min-height:560px;border:1px solid var(--line);border-radius:12px;background:#fff"></iframe>';
 }
 /* ---------- global search ---------- */
 function doSearch(q){
