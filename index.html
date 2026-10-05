@@ -1488,7 +1488,7 @@ function render(){
   else if(hash === "#/cheatsheet") v.innerHTML = pageCheat();
   else if(hash === "#/review") v.innerHTML = pageReview();
   else v.innerHTML = '<p>'+t("notFound")+'</p> <a href="#/">'+t("backHome")+'</a>';
-  document.getElementById("foot").textContent = t("foot");
+  document.getElementById("foot").textContent = t("foot") + " · v2.1";
   wirePage();
   window.scrollTo(0,0);
 }

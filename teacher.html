@@ -51,7 +51,7 @@ table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <span class="brand">📊 <span id="bTitle">FIN211 Teacher Dashboard</span> <small id="bSub">private</small></span>
+  <span class="brand">📊 <span id="bTitle">FIN211 Teacher Dashboard</span> <small id="bSub">private</small> <small style="opacity:.55">v2.1</small></span>
   <span class="sp"></span>
   <button class="ib" id="refreshBtn" hidden>⟳</button>
   <button class="ib" id="csvBtn" hidden>⬇ CSV</button>
@@ -109,6 +109,7 @@ function pct(n,d){ return d? Math.round(100*n/d):0; }
 function doneCount(u){ return Object.keys(u.done||{}).filter(function(k){return u.done[k];}).length; }
 function norm(r){ var u=r; if(typeof u.done==="string"){ try{u.done=JSON.parse(u.done||"{}");}catch(e){u.done={};} } if(typeof u.marks==="string"){ try{u.marks=JSON.parse(u.marks||"{}");}catch(e){u.marks={};} } u.done=u.done||{}; u.marks=u.marks||{}; u.visits=Number(u.visits)||0; return u; }
 function keyOf(n){ return String(n).trim().toLowerCase(); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function fmtDate(v){ if(!v) return "—"; var s=String(v); var m=s.match(/(\d{4}-\d{2}-\d{2})/); if(m) return m[1];
   var mo={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
   var m2=s.match(/([A-Z][a-z]{2}) (\d{1,2}) (\d{4})/);
@@ -151,7 +152,7 @@ function table(){
   h+='<div style="overflow-x:auto"><table class="tbl"><tr><th>'+t("name")+'</th><th class="num">'+t("visits")+'</th><th>'+t("progress")+'</th><th class="num">'+t("lessons")+'</th><th>'+t("last")+'</th><th>'+t("reg")+'</th></tr>';
   rows.forEach(function(u){
     var dc=doneCount(u);
-    h+='<tr class="click" data-stu="'+keyOf(u.name)+'"><td><b>'+u.name+'</b></td><td class="num">'+u.visits+'</td><td><div style="display:flex;gap:8px;align-items:center"><div class="bar" style="width:80px"><div class="fill" style="width:'+pct(dc,LESSONS.length)+'%"></div></div>'+pct(dc,LESSONS.length)+'%</div></td><td class="num">'+dc+'/'+LESSONS.length+'</td><td>'+fmtDate(u.lastVisit)+'</td><td>'+fmtDate(u.created)+'</td></tr>';
+    h+='<tr class="click" data-stu="'+keyOf(u.name)+'"><td><b>'+esc(u.name)+'</b></td><td class="num">'+u.visits+'</td><td><div style="display:flex;gap:8px;align-items:center"><div class="bar" style="width:80px"><div class="fill" style="width:'+pct(dc,LESSONS.length)+'%"></div></div>'+pct(dc,LESSONS.length)+'%</div></td><td class="num">'+dc+'/'+LESSONS.length+'</td><td>'+fmtDate(u.lastVisit)+'</td><td>'+fmtDate(u.created)+'</td></tr>';
   });
   return h+'</table></div>'+(detail()||"")+'</div>';
 }
@@ -161,7 +162,7 @@ function detail(){
   if(!u) return "";
   var done=LESSONS.filter(function(ls){ return u.done && u.done[ls[0]]; });
   var bm=Object.keys(u.marks||{}).filter(function(k){ return u.marks[k]; }).length;
-  var h='<div class="detail card" style="box-shadow:none;background:var(--accent-soft)"><h3 style="margin:0 0 6px">'+t("detail")+': '+u.name+' <span class="badge">'+t("visits")+' '+u.visits+'</span></h3>';
+  var h='<div class="detail card" style="box-shadow:none;background:var(--accent-soft)"><h3 style="margin:0 0 6px">'+t("detail")+': '+esc(u.name)+' <span class="badge">'+t("visits")+' '+u.visits+'</span></h3>';
   h+='<p class="small"><b>'+t("completedLessons")+' ('+done.length+'/'+LESSONS.length+'):</b></p><div class="chips">'+(done.length? done.map(function(ls){ return '<span class="badge ok">'+L(ls[1])+'</span>'; }).join("") : t("none"))+'</div>';
   h+='<p class="small"><b>'+t("bookmarks")+':</b> '+bm+' · <b>'+t("lastLesson")+':</b> '+(u.last? L((LESSONS.filter(function(x){return x[0]===u.last;})[0]||["",{en:u.last,ar:u.last}])[1]) : t("none"))+'</p></div>';
   return h;
