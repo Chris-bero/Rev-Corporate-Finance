@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIN211 Corporate Finance — Exam Cheat Sheet</title>
+<style>
+  :root{
+    --ink:#16233a; --muted:#5b6b82; --accent:#0f4c81; --accent2:#b8860b;
+    --bg:#f4f6f9; --card:#ffffff; --line:#dde4ee; --ok:#1a7f4b; --no:#b3261e;
+    --fbox:#f7f9fc; --ex:#fbf7ee;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font:15px/1.55 "Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  .wrap{display:grid;grid-template-columns:250px 1fr;max-width:1280px;margin:0 auto;gap:24px;padding:20px}
+  nav{position:sticky;top:20px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;max-height:calc(100vh - 40px);overflow:auto}
+  nav h1{font-size:16px;margin:0 0 4px;color:var(--accent)}
+  nav .sub{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+  nav a{display:block;padding:5px 8px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:13px}
+  nav a:hover{background:#eaf1f8;color:var(--accent)}
+  nav .n{color:var(--accent2);font-weight:700;margin-right:6px}
+  main{min-width:0}
+  header.hero{background:linear-gradient(135deg,#0f4c81,#16233a);color:#fff;border-radius:14px;padding:26px 28px;margin-bottom:20px}
+  header.hero h1{margin:0 0 6px;font-size:26px}
+  header.hero p{margin:2px 0;font-size:13px;opacity:.9}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:18px}
+  h2{font-size:20px;color:var(--accent);margin:0 0 4px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  h2 .src{float:right;font-size:11px;color:var(--muted);font-weight:400;margin-top:6px}
+  h3{font-size:14.5px;margin:16px 0 6px;color:var(--accent2);text-transform:uppercase;letter-spacing:.4px}
+  p{margin:6px 0}
+  .f{background:var(--fbox);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:9px 14px;margin:8px 0;font-family:Georgia,"Times New Roman",serif;font-size:16px;overflow-x:auto}
+  .f b{color:var(--accent)}
+  .where{font-size:12.5px;color:var(--muted);margin:-2px 0 8px 6px}
+  .frac{display:inline-block;vertical-align:middle;text-align:center;margin:0 3px}
+  .frac .top{display:block;border-bottom:1.5px solid var(--ink);padding:0 5px 1px}
+  .frac .bot{display:block;padding:1px 5px 0}
+  sub,sup{font-size:.68em}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+  th{background:#eef3f9;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  details{background:var(--ex);border:1px dashed #d9c48f;border-radius:8px;margin:8px 0;padding:6px 12px}
+  summary{cursor:pointer;font-weight:600;font-size:13px;color:#8a6d1a;outline:none}
+  details[open] summary{margin-bottom:6px}
+  .rule{display:inline-block;border-radius:20px;padding:2px 12px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+  .ok{background:#e5f5ec;color:var(--ok);border:1px solid #bfe3cf}
+  .no{background:#fdecea;color:var(--no);border:1px solid #f2c7c3}
+  .nt{background:#eef3f9;color:var(--accent);border:1px solid #cfdcec}
+  ul{margin:6px 0;padding-left:22px}
+  li{margin:3px 0}
+  .cols{columns:2;column-gap:28px}
+  .cols ul{break-inside:avoid}
+  .top-link{float:right;font-size:11px;color:var(--muted);text-decoration:none}
+  .defs dt{font-weight:700;color:var(--accent);font-size:13px}
+  .defs dd{margin:0 0 7px;font-size:13px;color:#33415a}
+  .hl{background:#fff3cd;padding:0 3px;border-radius:3px}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:10px 0 30px}
+  @media (max-width:900px){.wrap{grid-template-columns:1fr}.cols{columns:1}nav{position:static;max-height:none}}
+  @media print{
+    nav,footer,.top-link{display:none}
+    .wrap{display:block;max-width:none;padding:0}
+    body{background:#fff}
+    section{border:none;padding:6px 0;page-break-inside:avoid}
+    header.hero{background:#0f4c81;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    details{display:block}details[open] summary~*{display:block}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <h1>FIN211 Cheat Sheet</h1>
+  <div class="sub">Corporate Finance · ECU · FIN211</div>
+  <a href="#s1"><span class="n">1</span>Foundations &amp; Key Terms</a>
+  <a href="#s2"><span class="n">2</span>Cash Flow, OCF, FCF &amp; FCFF</a>
+  <a href="#s3"><span class="n">3</span>Cash Budgeting</a>
+  <a href="#s4"><span class="n">4</span>Financial Statement Analysis</a>
+  <a href="#s5"><span class="n">5</span>Stock Valuation</a>
+  <a href="#s6"><span class="n">6</span>Risk, Return, Portfolio &amp; CAPM</a>
+  <a href="#s7"><span class="n">7</span>TVM &amp; Bond Valuation</a>
+  <a href="#s8"><span class="n">8</span>Capital Budgeting</a>
+  <a href="#s9"><span class="n">9</span>International Financial Mgmt</a>
+  <a href="#s10"><span class="n">★</span>Decision-Rule Quick Card</a>
+</nav>
+<main>
+<header class="hero">
+  <h1>Corporate Finance — Exam Cheat Sheet</h1>
+  <p>FIN211 · Every formula, decision rule and key definition from Lectures 1–13, with the course's worked examples (tap “Example” to expand).</p>
+  <p>Sources: Titman &amp; Keown, <i>Financial Management</i> (13e) · Gitman, <i>Principles of Managerial Finance</i> (15e)</p>
+  <p style="margin-top:8px">Prepared by <b>领袖 - EBRA</b> · إعداد</p>
+</header>
+
+<!-- ================= 1 ================= -->
+<section id="s1">
+<h2>1 · Foundations &amp; Key Terms <span class="src">Lec 1 · Lec 2-P1</span><a class="top-link" href="#top">top</a></h2>
+<dl class="defs cols">
+  <dt>Finance</dt><dd>Management of money by individuals (personal), corporations (corporate), governments (public).</dd>
+  <dt>Corporate finance</dt><dd>Deals with capital structure (debt + equity); maximizes shareholders' wealth via short- &amp; long-term financing plans.</dd>
+  <dt>Corporate goal</dt><dd><span class="hl">Maximize shareholder wealth</span> (share price), not merely profit.</dd>
+  <dt>Capital management</dt><dd>Provide short-term liquidity through debt &amp; equity. Too much debt → default risk; too much equity → lower EPS.</dd>
+  <dt>Investment</dt><dd>Purchase of assets (stocks, bonds, real estate…) to earn dividends, interest, capital gains.</dd>
+  <dt>Capital budgeting</dt><dd>Decision process for analyzing potential investments in fixed assets.</dd>
+  <dt>Budgeting</dt><dd>Planning money by estimating future income/expenses over a period.</dd>
+  <dt>Financial markets</dt><dd>Any marketplace where securities trade (stock, bond, forex, derivatives).</dd>
+  <dt>Financial services</dt><dd>Design &amp; delivery of advice and financial products to individuals, firms, governments.</dd>
+  <dt>Areas of corporate finance</dt><dd>Capital budgeting · capital financing · working-capital management.</dd>
+</dl>
+<h3>Five principles of finance</h3>
+<ul class="cols">
+  <li><b>Time value of money</b> — a dollar today &gt; a dollar tomorrow.</li>
+  <li><b>Risk–return trade-off</b> — higher risk ⇒ higher return.</li>
+  <li><b>Cash flows are the source of value</b> (cash that can be taken out of the business).</li>
+  <li><b>Market prices reflect information</b> (buy &amp; sell ⇒ equilibrium).</li>
+  <li><b>Individuals respond to incentives</b> (motivation).</li>
+</ul>
+<h3>Business forms</h3>
+<table>
+  <tr><th></th><th>Sole proprietorship</th><th>Partnership</th><th>LP / LLC</th><th>Corporation</th></tr>
+  <tr><td>Owners</td><td>One</td><td>Two or more</td><td>≥1 GP + limited LPs</td><td>Shareholders</td></tr>
+  <tr><td>Liability for debts</td><td>Unlimited</td><td>Unlimited (each)</td><td>GP unlimited, LP limited</td><td>Limited</td></tr>
+  <tr><td>Owners manage?</td><td>Yes</td><td>Yes</td><td>GP yes, LP no</td><td>No (managers)</td></tr>
+  <tr><td>Change of ownership dissolves?</td><td>Yes</td><td>Yes</td><td>GP yes, LP no</td><td>No</td></tr>
+  <tr><td>Access to capital</td><td>Limited</td><td>Limited</td><td>Size-dependent</td><td>Very easy</td></tr>
+  <tr><td>Taxation</td><td>Personal</td><td>Personal</td><td>Personal</td><td><b>Double</b> (earnings + dividends)</td></tr>
+</table>
+<h3>Debt vs Equity</h3>
+<table>
+  <tr><th></th><th>Debt</th><th>Equity</th></tr>
+  <tr><td>Voting rights</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Claim on income/assets</td><td>Senior</td><td>Subordinate</td></tr>
+  <tr><td>Maturity</td><td>Stated</td><td>None</td></tr>
+  <tr><td>Tax treatment</td><td>Interest <b>deductible</b></td><td>No deduction</td></tr>
+</table>
+<h3>Accounting vs Finance</h3>
+<ul>
+  <li>Focus: accounting = past &amp; present · finance = <b>future-oriented</b> decisions.</li>
+  <li>Basis: accounting = <b>accrual</b> (IFRS/GAAP) · finance = <b>cash</b> (risk, TVM, value).</li>
+</ul>
+<h3>Earnings per share</h3>
+<div class="f"><b>EPS</b> = <span class="frac"><span class="top">Net income − Preferred dividends</span><span class="bot">Outstanding common shares</span></span></div>
+<details><summary>Example — EPS</summary>
+  NI 1,000,000; pref. div. 100,000; 450,000 shares → EPS = 900,000/450,000 = <b>$2.00</b>. Bakery: (20,000−2,000)/10,000 = <b>2.0</b>. More shares issued ⇒ lower EPS.
+</details>
+</section>
+
+<!-- ================= 2 ================= -->
+<section id="s2">
+<h2>2 · Cash Flow, OCF, FCF &amp; FCFF <span class="src">Lec 2-P2 · Lec 3</span><a class="top-link" href="#top">top</a></h2>
+<h3>Cash-flow categories</h3>
+<ul class="cols">
+  <li><b>Operating:</b> cash sales, collecting A/R, tax refunds | paying wages, payables, overhead, interest.</li>
+  <li><b>Investing:</b> sale / purchase of fixed assets.</li>
+  <li><b>Financing:</b> sale of stock, borrowing | buying back stock, dividends, debt repayment.</li>
+</ul>
+<h3>Depreciation (MACRS, 5-year recovery)</h3>
+<div class="f">Rates: Yr1 <b>20%</b> · Yr2 <b>32%</b> · Yr3 <b>19%</b> · Yr4 <b>12%</b> · Yr5 <b>12%</b> · Yr6 <b>5%</b> &nbsp;→&nbsp; Dep<sub>t</sub> = Installed cost × rate<sub>t</sub></div>
+<details><summary>Example — $100,000 machine</summary>
+  Depreciation: 20,000 · 32,000 · 19,000 · 12,000 · 12,000 · 5,000 (total 100,000). Depreciation matters: non-cash charge + <b>tax shield</b>.
+</details>
+<h3>Operating cash flow</h3>
+<div class="f">NOPAT = EBIT × (1 − T) &nbsp;&nbsp;|&nbsp;&nbsp; <b>OCF (unlevered)</b> = EBIT × (1 − T) + Depreciation</div>
+<div class="f"><b>OCF (levered)</b> = Net income after tax + Depreciation</div>
+<p class="where">Unlevered = cash to all capital providers before debt &amp; equity; levered = after interest/debt servicing.</p>
+<details><summary>Example — Baker Corp.</summary>
+  OCF = 370 × (1 − .40) + 100 = <b>$322</b> (thousands).
+</details>
+<h3>Free cash flow (FCF)</h3>
+<div class="f"><b>FCF</b> = OCF − NFAI − NCAI</div>
+<div class="f">NFAI = Δ Net fixed assets + Depreciation &nbsp;&nbsp;|&nbsp;&nbsp; NCAI = Δ Current assets − Δ (A/P + Accruals)</div>
+<details><summary>Example — Baker Corp.</summary>
+  NFAI = (1,200 − 1,000) + 100 = 300 · NCAI = (2,000 − 1,900) − (800 − 700) = 0 · FCF = 322 − 300 − 0 = <b>$22</b>.
+</details>
+<h3>Free cash flow to the firm (FCFF) ★</h3>
+<div class="f"><b>FCFF</b> = NI + Depreciation + [Interest × (1 − T)] − Fixed-asset investment − Δ Working capital</div>
+<p class="where">FCFF = cash available to debt holders, equity holders and re-investment.</p>
+<details><summary>Example 1</summary>
+  NI 500, D&amp;A 120, Int 100, T 30%, FA inv 200, WC inv 50 → FCFF = 500 + 120 + 100(0.70) − 200 − 50 = <b>440</b>.
+</details>
+<details><summary>Example 2 — ABC Co.</summary>
+  NI 245,000 + Dep 100,000 + Int 50,000(0.70) − FA inv (850,000−600,000) − ΔWC [(440,000−180,000) − (350,000−150,000)] = 245,000 + 100,000 + 35,000 − 250,000 − 60,000 = <b>70,000</b>.
+</details>
+<h3>Cash-flow ratios</h3>
+<div class="f">Cash-flow margin = <span class="frac"><span class="top">OCF</span><span class="bot">Sales revenue</span></span> &nbsp;&nbsp;|&nbsp;&nbsp; Cash-flow coverage = <span class="frac"><span class="top">OCF</span><span class="bot">Total debt</span></span></div>
+<p class="where">Margin: high = strong cash conversion; negative = operations consume cash. Coverage: high = debt repaid quickly (&gt;1 ⇒ under one year); 0.1–0.3 acceptable; &lt;0.1 low; negative = financial risk. ABC: margin = 345,000/2,000,000 = 0.1725; coverage = 345,000/450,000 ≈ 0.77.</p>
+</section>
+
+<!-- ================= 3 ================= -->
+<section id="s3">
+<h2>3 · Cash Budgeting <span class="src">Lec 4-P1</span><a class="top-link" href="#top">top</a></h2>
+<p>Financial planning = <b>cash planning</b> (cash budget) + <b>profit planning</b> (pro-forma statements). The cash budget shows expected cash <b>shortages / surpluses</b> month by month.</p>
+<h3>The three steps</h3>
+<ul>
+  <li><b>Step 1 — Cash receipts:</b> cash sales (% of sales) + collections of A/R lagged 1 month and 2 months + other receipts.</li>
+  <li><b>Step 2 — Cash disbursements:</b> purchases (% of sales) paid cash / lagged 1 mo / lagged 2 mo + rent, wages &amp; salaries, taxes, fixed-asset outlays, interest, dividends, principal.</li>
+  <li><b>Step 3 — Financing position:</b></li>
+</ul>
+<div class="f">Net cash flow = Receipts − Disbursements &nbsp;→&nbsp; Ending cash = Net CF + Beginning cash</div>
+<div class="f">Ending &lt; Minimum ⇒ <b>Required total financing</b> (notes payable) &nbsp;|&nbsp; Ending &gt; Minimum ⇒ <b>Excess cash</b> (marketable securities)</div>
+<details><summary>Example — Halley Co. (Oct–Dec, $000; sales Aug 100, Sep 200, Oct 400, Nov 300, Dec 200; 20% cash, 50% +1mo, 30% +2mo; Dec dividend +30)</summary>
+  <table>
+    <tr><th></th><th class="num">Oct</th><th class="num">Nov</th><th class="num">Dec</th></tr>
+    <tr><td>Total cash receipts</td><td class="num">210</td><td class="num">320</td><td class="num">340</td></tr>
+    <tr><td>Less: disbursements (purchases = 70% of sales; 10% cash, 70% +1mo, 20% +2mo)</td><td class="num">213</td><td class="num">418</td><td class="num">305</td></tr>
+    <tr><td>= Net cash flow</td><td class="num">(3)</td><td class="num">(98)</td><td class="num">35</td></tr>
+    <tr><td>+ Beginning cash</td><td class="num">50</td><td class="num">47</td><td class="num">(51)</td></tr>
+    <tr><td>= Ending cash</td><td class="num">47</td><td class="num">(51)</td><td class="num">(16)</td></tr>
+    <tr><td>− Minimum cash balance</td><td class="num">25</td><td class="num">25</td><td class="num">25</td></tr>
+    <tr><td>Required financing (notes payable)</td><td class="num">—</td><td class="num">76</td><td class="num">41</td></tr>
+    <tr><td>Excess cash (marketable securities)</td><td class="num">22</td><td class="num">—</td><td class="num">—</td></tr>
+  </table>
+  Oct surplus 22 → invest in marketable securities; Nov &amp; Dec deficits → finance.
+</details>
+<details><summary>Example — Q1 2025 (beginning cash 50, minimum 25)</summary>
+  <table>
+    <tr><th></th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th></tr>
+    <tr><td>Receipts − Disbursements</td><td class="num">420−426</td><td class="num">640−836</td><td class="num">680−610</td></tr>
+    <tr><td>= Net cash flow</td><td class="num">(6)</td><td class="num">(196)</td><td class="num">70</td></tr>
+    <tr><td>+ Beginning cash</td><td class="num">50</td><td class="num">44</td><td class="num">(152)</td></tr>
+    <tr><td>= Ending cash</td><td class="num">44</td><td class="num">(152)</td><td class="num">(82)</td></tr>
+    <tr><td>Required financing / Excess</td><td class="num">excess 19</td><td class="num">fin. 177</td><td class="num">fin. 107</td></tr>
+  </table>
+</details>
+</section>
+
+<!-- ================= 4 ================= -->
+<section id="s4">
+<h2>4 · Financial Statement Analysis <span class="src">Lec 4-P2 · Lec 5</span><a class="top-link" href="#top">top</a></h2>
+<h3>Common-size analysis</h3>
+<div class="f">Common-size % = <span class="frac"><span class="top">Comparison amount</span><span class="bot">Base amount</span></span> × 100</div>
+<p class="where">Base = total revenues (income statement) or total assets (balance sheet). E.g. COGS 98,432/218,739 = 45%; Equity/TA 344,373/365,389 = 94.2%.</p>
+<h3>Trend (horizontal) analysis</h3>
+<div class="f">% Change = <span class="frac"><span class="top">Dollar change</span><span class="bot">Base-year amount</span></span> × 100, &nbsp; Dollar change = Analysis year − Base year</div>
+<p class="where">E.g. Cash (261,248−224,399)/224,399 = 16.4%; NI (25−15)/15 = 66.6%; RE (67−65)/65 = 3.07%.</p>
+<h3>Ratio toolkit ★</h3>
+<table>
+  <tr><th>Group</th><th>Ratio</th><th>Formula</th><th>Read / rule</th></tr>
+  <tr><td rowspan="3">Liquidity</td><td>Current ratio</td><td>CA / CL</td><td>≥ 1 → covers short-term liabilities</td></tr>
+  <tr><td>Quick (acid-test)</td><td>(Cash + ST investments + A/R) / CL</td><td>≥ 1 → covers CL without selling inventory</td></tr>
+  <tr><td>Cash ratio</td><td>Cash (&amp; equivalents) / CL</td><td>Higher = stronger position</td></tr>
+  <tr><td rowspan="2">Efficiency</td><td>A/R turnover</td><td>Net credit sales / Avg net A/R</td><td>Higher = collects debts efficiently</td></tr>
+  <tr><td>Inventory turnover</td><td>COGS / Avg inventory</td><td>Higher = efficient inventory management</td></tr>
+  <tr><td rowspan="2">Solvency</td><td>Debt to assets</td><td>Total debt / Total assets</td><td>Long-term survival; lower = safer</td></tr>
+  <tr><td>Times interest earned</td><td>EBIT / Interest expense</td><td>Ability to meet interest payments</td></tr>
+  <tr><td rowspan="6">Profitability</td><td>Profit margin</td><td>Net income / Net sales</td><td>Net income per $1 of sales</td></tr>
+  <tr><td>Asset turnover</td><td>Net sales / Avg total assets</td><td>Revenue per $1 of assets</td></tr>
+  <tr><td>Return on assets</td><td>Net income / Avg total assets</td><td>NI per $1 invested in assets</td></tr>
+  <tr><td>Return on equity</td><td>Net income / Avg equity</td><td>NI per $1 of equity</td></tr>
+  <tr><td>EPS</td><td>NI / Weighted-avg shares</td><td>—</td></tr>
+  <tr><td>P/E ratio</td><td>Market price per share / EPS</td><td>—</td></tr>
+</table>
+<details><summary>Example — ABC Co. (all ratios)</summary>
+  Current = 440/180 = <b>2.44</b> · Quick = (100+180)/180 = <b>1.56</b> · Cash = 100/180 = <b>0.56</b> ·
+  Debt/Assets = (180+450)/1,290 = <b>48.8%</b> · TIE = 400/50 = <b>8×</b> ·
+  Margin = 245/2,000 = <b>12.25%</b> · Asset turnover = 2,000/[(950+1,290)/2] = <b>1.79</b> ·
+  ROA = 245/1,120 = <b>21.87%</b> · ROE = 245/[(500+660)/2] = <b>42.24%</b> ·
+  EPS = 245,000/250,000 = <b>$0.98</b> · P/E = 5/0.98 = <b>5.1</b>.
+</details>
+</section>
+
+<!-- ================= 5 ================= -->
+<section id="s5">
+<h2>5 · Stock Valuation <span class="src">Lec 8</span><a class="top-link" href="#top">top</a></h2>
+<h3>Expected return (dividends + capital gains)</h3>
+<div class="f">E(r) = <span class="frac"><span class="top">D</span><span class="bot">P</span></span> + g</div>
+<p class="where">D = dividend, P = price, g = growth. E.g. $1 dividend on $25 stock, g = 7% → 1/25 + 0.07 = <b>11%</b>.</p>
+<h3>Zero-growth model (perpetuity; also preferred stock)</h3>
+<div class="f">P<sub>0</sub> = D<sub>1</sub> × <span class="frac"><span class="top">1</span><span class="bot">r<sub>s</sub></span></span> = <span class="frac"><span class="top">D<sub>1</sub></span><span class="bot">r<sub>s</sub></span></span></div>
+<details><summary>Examples</summary>
+  Constant $3 dividend, r<sub>s</sub> = 15% → P<sub>0</sub> = 3/0.15 = <b>$20</b>. Table: 3/0.12 = 25 · 5/0.10 = 50 · 4/0.16 = 25 · 2.5/0.08 = 31.25 · 6/0.15 = 40.
+</details>
+<h3>Constant-growth model (Gordon) ★</h3>
+<div class="f">P<sub>0</sub> = <span class="frac"><span class="top">D<sub>1</sub></span><span class="bot">r<sub>s</sub> − g</span></span>, &nbsp; D<sub>1</sub> = D<sub>0</sub>(1 + g)</div>
+<details><summary>Examples</summary>
+  D<sub>0</sub> = 1.40, g = 7%, r<sub>s</sub> = 15% → 1.40(1.07)/(0.15−0.07) = <b>$18.75</b>. Table: 2/(0.10−0.04) = 33.33 · 3/(0.12−0.05) = 42.86 · 1.5/(0.09−0.03) = 25 · 2.5/(0.11−0.06) = 50 · 4/(0.14−0.05) = 44.44.
+</details>
+<p><span class="rule ok">Buy if value &gt; price (undervalued)</span><span class="rule no">Sell/avoid if value &lt; price (overvalued)</span></p>
+<h3>Must-know terms</h3>
+<ul class="cols">
+  <li><b>Common stock:</b> residual claimants; voting rights; returns = dividends + capital gains.</li>
+  <li><b>Share types:</b> authorized · issued · outstanding · treasury; par vs no-par.</li>
+  <li><b>IPO:</b> needs shareholder approval + investment bank underwriting (bank buys issue at agreed price, bears selling risk).</li>
+  <li><b>Preferred stock:</b> fixed dividend, prior claim, <b>cumulative</b> (arrears), paid before common; hybrid of bond &amp; stock.</li>
+</ul>
+</section>
+
+<!-- ================= 6 ================= -->
+<section id="s6">
+<h2>6 · Risk, Return, Portfolio &amp; CAPM <span class="src">Lec 8 · Lec 9</span><a class="top-link" href="#top">top</a></h2>
+<h3>Individual asset</h3>
+<div class="f">E(R) = Σ P<sub>i</sub> R<sub>i</sub> &nbsp;&nbsp;|&nbsp;&nbsp; σ² = Σ P<sub>i</sub>(R<sub>i</sub> − E(R))² &nbsp;&nbsp;|&nbsp;&nbsp; σ = √σ²</div>
+<details><summary>Example — states of nature (P: recession .2, normal .5, boom .3)</summary>
+  Stock C: E(R) = .2(.02)+.5(.10)+.3(.15) = <b>9.7%</b>; σ² = 0.002028 → σ = <b>4.5%</b>. Stock T: E(R) = <b>17.7%</b>. Total risk = σ; systematic risk = β (C: σ20%/β1.25 vs K: σ30%/β0.95 → K more total risk, C more systematic risk &amp; higher expected return).
+</details>
+<h3>Portfolio return &amp; weights</h3>
+<div class="f">w<sub>i</sub> = <span class="frac"><span class="top">Investment<sub>i</sub></span><span class="bot">Total portfolio</span></span> (Σw = 1) &nbsp;&nbsp;|&nbsp;&nbsp; E(R<sub>p</sub>) = Σ w<sub>i</sub> E(R<sub>i</sub>)</div>
+<details><summary>Examples</summary>
+  $15,000: IREX 2,000 (.1333, 19.65%) · AIND 3,000 (.2, 8.96%) · EFID 4,000 (.266, 9.67%) · EKHO 6,000 (.4, 8.13%) → E(R<sub>p</sub>) = .0262+.0179+.0257+.0325 = <b>10%</b>. AbuAuf &amp; VCola — half the money in each, 14% return each → <b>14%</b>.
+</details>
+<h3>Two-asset portfolio standard deviation ★</h3>
+<div class="f">σ<sub>p</sub> = √( w<sub>1</sub>²σ<sub>1</sub>² + w<sub>2</sub>²σ<sub>2</sub>² + 2 w<sub>1</sub>w<sub>2</sub> ρ<sub>1,2</sub> σ<sub>1</sub>σ<sub>2</sub> )</div>
+<details><summary>Example — w .5/.5, σ .2/.2, ρ = +0.75</summary>
+  σ<sub>p</sub> = √(.5²·.2² + .5²·.2² + 2·.5·.5·.75·.2·.2) = √0.035 = <b>0.187</b>. ρ = +0.75 ⇒ returns move together but not in perfect unison.
+</details>
+<h3>Types of risk</h3>
+<ul class="cols">
+  <li><b>Systematic</b> (market / non-diversifiable): GDP, inflation, interest rates — measured by β.</li>
+  <li><b>Unsystematic</b> (unique / asset-specific): strikes, part shortages — <b>eliminated by diversification</b>.</li>
+  <li><b>Total risk</b> = σ; don't hold one asset or one industry.</li>
+</ul>
+<h3>Portfolio beta</h3>
+<div class="f">β<sub>p</sub> = Σ w<sub>i</sub> β<sub>i</sub></div>
+<p class="where">.133(3.69) + .2(0.64) + .167(1.64) + .4(1.79) = <b>1.61</b>.</p>
+<h3>CAPM ★</h3>
+<div class="f">R<sub>e</sub> = R<sub>f</sub> + β (R<sub>m</sub> − R<sub>f</sub>)</div>
+<p class="where">R<sub>f</sub> = risk-free rate (e.g. T-bills), R<sub>m</sub> = market return, (R<sub>m</sub>−R<sub>f</sub>) = market risk premium. Higher β ⇒ higher risk premium.</p>
+<details><summary>Examples &amp; decision rule</summary>
+  R<sub>f</sub> 4%, R<sub>m</sub> 10%, β 1.5 → R<sub>e</sub> = 4 + 1.5(6) = <b>13%</b>. R<sub>f</sub> 3%, R<sub>m</sub> 11% (premium 8%): A β.8 → 9.4% vs exp 8% ⇒ <b>No</b>; B β1.2 → 12.6% vs 14% ⇒ <b>Yes</b>; C β1.5 → 15% vs 16% ⇒ <b>Yes</b>. R<sub>f</sub> 5%, R<sub>m</sub> 12%: X β.5 → 8.5% vs 7% No; Y β1.0 → 12% vs 12% Yes; Z β1.8 → 17.6% vs 18% Yes.<br>
+  <span class="rule ok">Accept: Expected return ≥ CAPM return</span><span class="rule no">Reject: Expected return &lt; CAPM return</span>
+</details>
+</section>
+
+<!-- ================= 7 ================= -->
+<section id="s7">
+<h2>7 · Time Value of Money &amp; Bond Valuation <span class="src">Lec 10</span><a class="top-link" href="#top">top</a></h2>
+<h3>Simple interest</h3>
+<div class="f">FV = PV × (1 + r·n) &nbsp;&nbsp;|&nbsp;&nbsp; PV = <span class="frac"><span class="top">FV</span><span class="bot">1 + r·n</span></span></div>
+<p class="where">PV 100 at 6% for 1 year → FV 106. FV table (PV, r, n → FV): (10,000, 5%, 3) → 11,500 · (25,000, 7%, 4) → 32,000 · (5,000, 6%, 1.5) → 5,450. PV table (FV, r, n → PV): (12,000, 5%, 3) → 10,434.78 · (20,000, 6%, 4) → 16,129.03 · (8,000, 9%, 2) → 6,779.66.</p>
+<h3>Compound interest</h3>
+<div class="f">FV = PV × (1 + r)<sup>n</sup> &nbsp;&nbsp;|&nbsp;&nbsp; PV = <span class="frac"><span class="top">FV</span><span class="bot">(1 + r)<sup>n</sup></span></span></div>
+<p class="where">PV 100 at 6% for 5 years → FV 133.8. FV table (PV, r, n → FV): (10,000, 5%, 3) → 11,576.25 · (15,000, 8%, 5) → 22,039.92 · (50,000, 6%, 10) → 89,542.4. PV table (FV, r, n → PV): (15,000, 5%, 4) → 12,340 · (30,000, 6%, 3) → 25,188 · (10,000, 8%, 10) → 4,631.93.</p>
+<h3>Annuities (end-of-year payments)</h3>
+<div class="f">FV = PMT × <span class="frac"><span class="top">(1 + r)<sup>n</sup> − 1</span><span class="bot">r</span></span> &nbsp;&nbsp;|&nbsp;&nbsp; PV = PMT × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span></div>
+<p class="where">PMT = 5,000 paid at the end of each year for 5 years, at r = 5%: FV = 5,000 × 5.5256 = <b>27,628</b>; PV = 5,000 × 4.3298 = <b>21,647.8</b>.</p>
+<h3>Bond terms</h3>
+<ul class="cols">
+  <li><b>Loans</b> = private debt (two parties). Pros: speed · reduced costs · financing flexibility. Cons: interest cost higher than bonds · restrictive covenants · possible future SEC registration. <b>Bonds</b> = public debt, traded in bond markets.</li>
+  <li><b>Indenture</b> = legal contract with trustee; bondholders' claims <b>senior</b> to common stock.</li>
+  <li><b>Par value</b> = face repaid at <b>maturity</b>; <b>coupon rate</b> = % of par paid yearly.</li>
+  <li><b>Call provision</b> = issuer may redeem early; <b>conversion</b> = bond → shares.</li>
+  <li><b>Floating rate</b> = index (LIBOR) of prior period + spread, subject to cap &amp; floor.</li>
+</ul>
+<div class="f">Current yield = <span class="frac"><span class="top">Annual interest</span><span class="bot">Current market price</span></span> &nbsp;|&nbsp; Accrued interest = <span class="frac"><span class="top">Months since payment</span><span class="bot">12</span></span> × Annual coupon</div>
+<p class="where">8% coupon, $1,000 par, price $700 → 80/700 = <b>11.4%</b>; 6 months accrued = 6/12 × 80 = <b>$40</b>. Floating loan (LIBOR+0.25, cap 2.5, floor 1.75): wk2 2.23 · wk3 1.91 · wk4 1.77 · wk5 1.60 · wk6 1.85 · wk7 1.88 · wk8 1.92 · wk9 2.13 · wk10 2.18.</p>
+<h3>Bond value ★</h3>
+<div class="f">B<sub>0</sub> = C × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span> + <span class="frac"><span class="top">Par</span><span class="bot">(1 + r)<sup>n</sup></span></span></div>
+<p class="where">= PV of coupon annuity + PV of par. C = coupon rate × par.</p>
+<details><summary>Examples</summary>
+  12% required, $120 coupon, 5yr → 432.576 + 567.427 = <b>1,000</b> (par). 15% → 402.264 + 497.77 = <b>899.44</b> (discount). 9% → 466.758 + 649.93 = <b>1,116.68</b> (premium). Coupon 8% with required yield 11.4% over 10 years → 458 + 339 = <b>803</b>. Table (coupon rate, required yield r, years → bond value): (7%, 5%, 3) → 1,054.47 · (8%, 10%, 4) → 936.60 · (6%, 7%, 5) → 959.00.<br>
+  r &gt; coupon ⇒ discount · r = coupon ⇒ par · r &lt; coupon ⇒ premium.
+</details>
+<p><span class="rule ok">Accept/buy: DCF value &gt; market price (undervalued)</span><span class="rule no">Reject: DCF value &lt; market price (overvalued)</span></p>
+</section>
+
+<!-- ================= 8 ================= -->
+<section id="s8">
+<h2>8 · Capital Budgeting <span class="src">Lec 12</span><a class="top-link" href="#top">top</a></h2>
+<p><b>Capital budgeting</b> = decision process for analyzing potential fixed-asset investments. Important because of: growth, large amounts, irreversibility, complexity, risk, long-term implications. Uses: new product/service, replacement, expansion, R&amp;D, long-term contracts, safety/environment.</p>
+<h3>Techniques</h3>
+<ul class="cols">
+  <li><b>Non-discounted:</b> Payback period (PBP) · Average rate of return (ARR).</li>
+  <li><b>Discounted:</b> Discounted PBP · NPV · IRR · Profitability index.</li>
+</ul>
+<h3>Payback period</h3>
+<div class="f">Constant inflow: PBP = <span class="frac"><span class="top">Initial investment</span><span class="bot">Annual fixed cash inflow</span></span></div>
+<div class="f">Variable inflow: PBP = Completed years + <span class="frac"><span class="top">Remaining outflow</span><span class="bot">Cash inflow of year t</span></span></div>
+<details><summary>Examples</summary>
+  Constant: A 50,000/12,000 = 4.17yr · B 60,000/15,000 = <b>4yr (best)</b> · C 45,000/10,000 = 4.5yr.<br>
+  Variable: A 50,000 → cum 15/30/40/46 + 4,000/5,000 = <b>4.8yr</b>; B 60,000 → cum 20/40/50/56 + 4,000/6,000 = <b>4.66yr (best)</b>; C 45,000 → cum 12/24/36/42 + 3,000/4,000 = <b>4.75yr</b>. <span class="rule ok">Shorter PBP = better</span>
+</details>
+<h3>Average rate of return</h3>
+<div class="f">ARR = <span class="frac"><span class="top">Average profit after tax</span><span class="bot">Average investment</span></span> &nbsp; or &nbsp; <span class="frac"><span class="top">Average profit after tax</span><span class="bot">Initial investment</span></span></div>
+<p class="where">Determines the average annual earning of a project.</p>
+</section>
+
+<!-- ================= 9 ================= -->
+<section id="s9">
+<h2>9 · International Financial Management <span class="src">Lec 13</span><a class="top-link" href="#top">top</a></h2>
+<ul class="cols">
+  <li><b>MNC:</b> produces &amp; sells in more than one country; parent in home country + typically 5–6 foreign subsidiaries with strategic interaction.</li>
+  <li><b>Classifications:</b> international · multinational · transnational corporations.</li>
+  <li><b>Formation (FDI):</b> buying an entire company, or partial ownership (<b>≥10%</b> of stock).</li>
+  <li><b>Motives:</b> raw-material seekers (BP, Exxon, Total) · market seekers (per-capita markets) · cost minimizers (Microsoft).</li>
+  <li><b>Goal:</b> maximize shareholder wealth (share price + coupons).</li>
+  <li><b>Roles:</b> global manager (adjust to volatility) · politician &amp; labor-union face (jobs/exports at home vs abroad).</li>
+  <li><b>Difficulties:</b> exchange-rate risk · inflation risk · tax-rate differences · multiple financial markets · political risk.</li>
+  <li><b>FX market participants:</b> bank &amp; non-bank dealers · individuals &amp; firms · speculators &amp; arbitragers · central banks &amp; treasuries · brokers.</li>
+</ul>
+<h3>Exchange-rate regimes</h3>
+<ul class="cols">
+  <li><b>Hard pegs:</b> gave up monetary sovereignty (adopt another currency / currency board).</li>
+  <li><b>Soft pegs:</b> fixed exchange rates.</li>
+  <li><b>Floating:</b> freely floating (market supply &amp; demand, occasional intervention) · managed floating (secret targets, heavy intervention).</li>
+  <li><b>Residual:</b> everything else.</li>
+</ul>
+<h3>Quotations</h3>
+<div class="f">Direct = home-currency price of 1 unit foreign &nbsp;|&nbsp; Indirect = foreign-currency price of 1 unit home</div>
+<p class="where">European terms = indirect for Americans; American terms = direct. E.g. 22-Jan-2020: $1 = EGP 15.80 = 0.90 € = 2.82 TD.</p>
+</section>
+
+<!-- ================= 10 ================= -->
+<section id="s10">
+<h2>★ Decision-Rule Quick Card <span class="src">all lectures</span></h2>
+<table>
+  <tr><th>Situation</th><th>Rule</th></tr>
+  <tr><td>Asset vs CAPM (Lec 9)</td><td><span class="rule ok">Accept if E(R) ≥ R<sub>f</sub>+β(R<sub>m</sub>−R<sub>f</sub>)</span><span class="rule no">Reject if below</span></td></tr>
+  <tr><td>Stock / bond vs market price (Lec 8, 10)</td><td><span class="rule ok">Buy if model value &gt; price (undervalued)</span><span class="rule no">Avoid if value &lt; price (overvalued)</span></td></tr>
+  <tr><td>Bond coupon vs required yield (Lec 10)</td><td>r &gt; coupon → discount · r = coupon → par · r &lt; coupon → premium</td></tr>
+  <tr><td>Projects by payback (Lec 12)</td><td><span class="rule ok">Choose shortest payback period</span></td></tr>
+  <tr><td>Cash budget ending cash (Lec 4)</td><td>Below minimum → notes payable (finance) · above minimum → marketable securities (invest)</td></tr>
+  <tr><td>Liquidity ratios (Lec 5)</td><td>Current &amp; quick ≥ 1 = able to cover short-term obligations</td></tr>
+  <tr><td>Cash-flow coverage (Lec 3)</td><td>&gt;1 ⇒ debt repayable in &lt;1 yr · 0.1–0.3 acceptable · &lt;0.1 low · negative = financial risk</td></tr>
+  <tr><td>Diversification (Lec 9)</td><td>Only <b>unsystematic</b> risk can be diversified away; systematic (β) cannot</td></tr>
+</table>
+<p style="font-size:12.5px;color:var(--muted)">Course assessment: classwork 20% · mid-term I 20% · mid-term II 20% · final 40%. Good luck! 🍀</p>
+</section>
+
+<footer>FIN211 Corporate Finance · cheat sheet compiled from lecture slides 1–13 (ECU) · self-contained HTML — works offline &amp; prints cleanly · Prepared by 领袖 - EBRA.</footer>
+</main>
+</div>
+</body>
+</html>
