@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -7,7 +8,8 @@
 <style>
 :root{--bg:#f4f6fa;--card:#fff;--ink:#16233a;--muted:#5c6b84;--navy:#0e2a47;--accent:#1663c7;--accent-soft:#e8f0fb;--gold:#b8860b;--gold-soft:#fdf6e3;--line:#dfe6f0;--ok:#1a7f4b;--ok-soft:#e5f5ec;--warn:#b3261e;--warn-soft:#fdecea;--shadow:0 1px 3px rgba(16,42,67,.08),0 10px 28px rgba(16,42,67,.07);--radius:14px}
 [data-theme="dark"]{--bg:#0c1420;--card:#141f30;--ink:#e8eef7;--muted:#9db0c7;--navy:#0a111c;--accent:#6fa8ff;--accent-soft:#16283f;--gold:#e0b050;--gold-soft:#2a2312;--line:#243449;--ok:#5ec99a;--ok-soft:#12291e;--warn:#ff8f86;--warn-soft:#33161a;--shadow:0 1px 3px rgba(0,0,0,.5),0 10px 28px rgba(0,0,0,.35)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Segoe UI",system-ui,Tahoma,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Segoe UI",system-ui,Tahoma,Arial,sans-serif}
 [dir="rtl"] body{font-family:Tahoma,"Segoe UI",Arial,sans-serif}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;box-shadow:var(--shadow)}
@@ -17,25 +19,24 @@
 .sp{margin-inline-start:auto}
 .ib{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:9px;padding:6px 11px;font:inherit;font-size:13px;cursor:pointer}
 .ib:hover{background:rgba(255,255,255,.22)}
-.view{max-width:1150px;margin:0 auto;padding:20px 16px 60px;display:block}
-.view>.card,.view>.grid,.view>h2{width:100%}
-.grid>*{min-width:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.view{max-width:1150px;margin:0 auto;padding:20px 16px 60px;display:block;width:100%}
+.card{display:block;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin:0 0 14px}
+.statsrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;width:100%;margin:0 0 14px}
 .stat b{font-size:26px;color:var(--accent);display:block}
 .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-h2.sec{font-size:18px;margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+h2.sec{font-size:18px;margin:22px 0 10px;display:flex;align-items:center;gap:10px;width:100%}
 h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
-.tbl th,.tbl td{border:1px solid var(--line);padding:7px 9px;text-align:start;word-break:break-word}
+.tbl th,.tbl td{border:1px solid var(--line);padding:7px 9px;text-align:start;vertical-align:top;word-break:break-word}
 .tbl th{background:var(--accent-soft);color:var(--accent);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
 .tbl td.num,.tbl th.num{text-align:end;font-variant-numeric:tabular-nums}
-.tbl tr.click{cursor:pointer}.tbl tr.click:hover{background:var(--accent-soft)}
+.tbl tr.click{cursor:pointer}
+.tbl tr.click:hover{background:var(--accent-soft)}
 .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;min-width:90px}
 .bar .fill{height:100%;background:linear-gradient(90deg,var(--accent),#4d8fe0)}
 .lrow{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
-.lrow .lt{flex:0 0 46%;color:var(--ink)}
-.lrow .ln{flex:0 0 64px;color:var(--muted);font-size:12px;text-align:end}
+.lrow .lt{flex:0 0 44%;color:var(--ink)}
+.lrow .ln{flex:0 0 70px;color:var(--muted);font-size:12px;text-align:end}
 .gate{max-width:420px;margin:8vh auto}
 .gate input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;font:inherit;background:var(--bg);color:var(--ink);margin:8px 0}
 .err{color:var(--warn);font-size:13px;min-height:18px}
@@ -43,15 +44,15 @@ table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
 .badge.ok{background:var(--ok-soft);color:var(--ok)}
 .muted{color:var(--muted)}.small{font-size:12.5px}
 .btn{border:0;border-radius:10px;padding:9px 16px;font-weight:700;font-size:13.5px;cursor:pointer;background:var(--accent);color:#fff}
-.btn.soft{background:var(--accent-soft);color:var(--accent)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
-.detail{margin-top:14px}
-@media (max-width:760px){.lrow .lt{flex-basis:60%}.grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
+.detail{background:var(--accent-soft)}
+.banner{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn);border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:13.5px;font-weight:600}
+@media (max-width:760px){.lrow .lt{flex-basis:60%}}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <span class="brand">📊 <span id="bTitle">FIN211 Teacher Dashboard</span> <small id="bSub">private</small> <small style="opacity:.55">v2.1</small></span>
+  <span class="brand">📊 <span id="bTitle">FIN211 Teacher Dashboard</span> <small id="bSub">private</small> <small style="opacity:.55">v2.2</small></span>
   <span class="sp"></span>
   <button class="ib" id="refreshBtn" hidden>⟳</button>
   <button class="ib" id="csvBtn" hidden>⬇ CSV</button>
@@ -64,8 +65,7 @@ table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
 <script>
 "use strict";
 /* ===== Teacher-only configuration =====
-   PIN below gates this dashboard on this device only.
-   Change it here if you wish. All data comes from the course Google Sheet. */
+   PIN gates this dashboard on this device only. Change it here if you wish. */
 var TEACHER_PIN = "211";
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwQiabb3_nKMBSCOMlO92A3Pc0ahvD0XO1aWBrzbAHtbZOstRyirKmLiqSl6PSk6ZmqQ/exec";
 
@@ -91,103 +91,127 @@ var LESSONS = [
 var T = {
  en:{title:"FIN211 Teacher Dashboard",sub:"teacher-only statistics",pin:"Teacher PIN",unlock:"Unlock dashboard",wrong:"Wrong PIN.",
   students:"Students",visits:"Total visits",avg:"Average progress",today:"Active today",done:"Finished course",
-  perLesson:"Lesson completion",table:"All students",name:"Name",progress:"Progress",lessons:"Lessons",last:"Last visit",reg:"Registered",view:"View",
+  perLesson:"Lesson completion",table:"All students",name:"Name",progress:"Progress",lessons:"Lessons",last:"Last visit",reg:"Registered",
   detail:"Student detail",completedLessons:"Completed lessons",bookmarks:"Bookmarks",lastLesson:"Last lesson",none:"—",
   err:"Could not reach the Google Sheet. Check the connection and retry.",retry:"Retry",noStudents:"No students recorded yet.",
-  search:"Search students…",exported:"CSV downloaded",lock:"Lock",refresh:"Refresh",csv:"Export CSV",of:"of"},
+  search:"Search students…",lock:"Lock",refresh:"Refresh",csv:"Export CSV",of:"of",
+  corrupt:"Layout self-check failed — this copy of the file may be corrupted or cached. Re-download the latest ZIP and hard-refresh (Ctrl+Shift+R)."},
  ar:{title:"لوحة معلم FIN211",sub:"إحصائيات للمعلم فقط",pin:"رمز المعلم",unlock:"فتح اللوحة",wrong:"رمز خاطئ.",
   students:"الطلاب",visits:"إجمالي الزيارات",avg:"متوسط التقدم",today:"نشطون اليوم",done:"أتموا المقرر",
-  perLesson:"إتمام الدروس",table:"كل الطلاب",name:"الاسم",progress:"التقدم",lessons:"الدروس",last:"آخر زيارة",reg:"التسجيل",view:"عرض",
+  perLesson:"إتمام الدروس",table:"كل الطلاب",name:"الاسم",progress:"التقدم",lessons:"الدروس",last:"آخر زيارة",reg:"التسجيل",
   detail:"تفاصيل الطالب",completedLessons:"الدروس المكتملة",bookmarks:"الإشارات",lastLesson:"آخر درس",none:"—",
   err:"تعذر الوصول إلى جوجل شيت. تحقق من الاتصال وأعد المحاولة.",retry:"إعادة",noStudents:"لا طلاب مسجلين بعد.",
-  search:"ابحث عن طالب…",exported:"تم تنزيل CSV",lock:"قفل",refresh:"تحديث",csv:"تصدير CSV",of:"من"}
+  search:"ابحث عن طالب…",lock:"قفل",refresh:"تحديث",csv:"تصدير CSV",of:"من",
+  corrupt:"فشل الفحص الذاتي للتخطيط — نسختك من هذا الملف تالفة أو مخزّنة قديمة. أعد تنزيل أحدث حزمة وحدّث بقوة (Ctrl+Shift+R)."}
 };
-var lang = "en", theme = "light", DATA = null, detailId = null, filterQ = "";
+var lang="en", theme="light", DATA=null, detailId=null, filterQ="";
 function t(k){ return T[lang][k]; }
 function L(o){ return o[lang]; }
 function pct(n,d){ return d? Math.round(100*n/d):0; }
-function doneCount(u){ return Object.keys(u.done||{}).filter(function(k){return u.done[k];}).length; }
-function norm(r){ var u=r; if(typeof u.done==="string"){ try{u.done=JSON.parse(u.done||"{}");}catch(e){u.done={};} } if(typeof u.marks==="string"){ try{u.marks=JSON.parse(u.marks||"{}");}catch(e){u.marks={};} } u.done=u.done||{}; u.marks=u.marks||{}; u.visits=Number(u.visits)||0; return u; }
-function keyOf(n){ return String(n).trim().toLowerCase(); }
 function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function keyOf(n){ return String(n).trim().toLowerCase(); }
+function doneCount(u){ return Object.keys(u.done||{}).filter(function(k){return u.done[k];}).length; }
 function fmtDate(v){ if(!v) return "—"; var s=String(v); var m=s.match(/(\d{4}-\d{2}-\d{2})/); if(m) return m[1];
   var mo={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
   var m2=s.match(/([A-Z][a-z]{2}) (\d{1,2}) (\d{4})/);
   if(m2 && mo[m2[1]]) return m2[3]+"-"+mo[m2[1]]+"-"+(m2[2].length<2?"0"+m2[2]:m2[2]);
   var d=new Date(s); return isNaN(d.getTime())? s.slice(0,10) : d.toISOString().slice(0,10); }
+function norm(r){ var u=r; if(typeof u.done==="string"){ try{u.done=JSON.parse(u.done||"{}");}catch(e){u.done={};} } if(typeof u.marks==="string"){ try{u.marks=JSON.parse(u.marks||"{}");}catch(e){u.marks={};} } u.done=u.done||{}; u.marks=u.marks||{}; u.visits=Number(u.visits)||0; return u; }
 function load(cb){
   fetch(SCRIPT_URL + "?action=list").then(function(r){ return r.json(); }).then(function(res){
-    if(res && res.ok){ DATA = res.students.map(norm); cb(true); } else { DATA=null; cb(false); }
+    if(res && res.ok){ DATA = (res.students||[]).map(norm); cb(true); } else { DATA=null; cb(false); }
   }).catch(function(){ DATA=null; cb(false); });
 }
-/* ---------- views ---------- */
-function gate(){
-  return '<div class="gate"><div class="card"><h2 style="margin:0 0 4px">'+t("title")+'</h2><p class="muted small">'+t("sub")+'</p>'+
-  '<input id="pin" type="password" placeholder="'+t("pin")+'" autocomplete="current-password"><div class="err" id="perr"></div>'+
-  '<button class="btn" id="go" style="width:100%">'+t("unlock")+'</button></div></div>';
-}
-function stats(){
+/* ---------- sections (each returns a complete, self-closed string) ---------- */
+function secStats(){
   var n=DATA.length, tv=0, tp=0, today=new Date().toISOString().slice(0,10), act=0, fin=0;
   DATA.forEach(function(u){ tv+=u.visits; var dc=doneCount(u); tp+=pct(dc,LESSONS.length); if(u.lastVisit===today) act++; if(dc===LESSONS.length) fin++; });
-  return '<div class="grid">'+
-   '<div class="card stat"><b>'+n+'</b><span>'+t("students")+'</span></div>'+
-   '<div class="card stat"><b>'+tv+'</b><span>'+t("visits")+'</span></div>'+
-   '<div class="card stat"><b>'+(n?Math.round(tp/n):0)+'%</b><span>'+t("avg")+'</span></div>'+
-   '<div class="card stat"><b>'+act+'</b><span>'+t("today")+'</span></div>'+
-   '<div class="card stat"><b>'+fin+'</b><span>'+t("done")+'</span></div></div>';
+  var cards = "";
+  cards += '<div class="card stat"><b>'+n+'</b><span>'+t("students")+'</span></div>';
+  cards += '<div class="card stat"><b>'+tv+'</b><span>'+t("visits")+'</span></div>';
+  cards += '<div class="card stat"><b>'+(n?Math.round(tp/n):0)+'%</b><span>'+t("avg")+'</span></div>';
+  cards += '<div class="card stat"><b>'+act+'</b><span>'+t("today")+'</span></div>';
+  cards += '<div class="card stat"><b>'+fin+'</b><span>'+t("done")+'</span></div>';
+  return '<div class="statsrow">'+cards+'</div>';
 }
-function lessonBars(){
-  var h='<h2 class="sec">'+t("perLesson")+'</h2><div class="card">';
+function secBars(){
+  var inner = "";
   LESSONS.forEach(function(ls){
     var c=DATA.filter(function(u){ return u.done && u.done[ls[0]]; }).length;
-    h+='<div class="lrow"><span class="lt">'+L(ls[1])+'</span><div class="bar" style="flex:1"><div class="fill" style="width:'+pct(c,DATA.length)+'%"></div></div><span class="ln">'+c+' '+t("of")+' '+DATA.length+'</span></div>';
+    inner += '<div class="lrow"><span class="lt">'+L(ls[1])+'</span><div class="bar" style="flex:1"><div class="fill" style="width:'+pct(c,DATA.length)+'%"></div></div><span class="ln">'+c+' '+t("of")+' '+DATA.length+'</span></div>';
   });
-  return h+'</div>';
+  return '<h2 class="sec">'+t("perLesson")+'</h2><div class="card">'+inner+'</div>';
 }
-function table(){
+function secTable(){
   var rows=DATA.filter(function(u){ return !filterQ || keyOf(u.name).indexOf(filterQ)>-1; });
   rows=rows.slice().sort(function(a,b){ return b.visits-a.visits; });
-  var h='<h2 class="sec">'+t("table")+'</h2><div class="card"><input id="fq" type="search" placeholder="'+t("search")+'" value="'+filterQ+'" style="width:100%;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;background:var(--bg);color:var(--ink);margin-bottom:10px">';
-  if(!rows.length){ return h+'<p class="muted">'+t("noStudents")+'</p></div>'; }
-  h+='<div style="overflow-x:auto"><table class="tbl"><tr><th>'+t("name")+'</th><th class="num">'+t("visits")+'</th><th>'+t("progress")+'</th><th class="num">'+t("lessons")+'</th><th>'+t("last")+'</th><th>'+t("reg")+'</th></tr>';
+  var h='<h2 class="sec">'+t("table")+'</h2>';
+  h+='<div class="card">';
+  h+='<input id="fq" type="search" placeholder="'+t("search")+'" value="'+esc(filterQ)+'" style="width:100%;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;background:var(--bg);color:var(--ink);margin-bottom:10px">';
+  if(!rows.length){ h+='<p class="muted">'+t("noStudents")+'</p></div>'; return h; }
+  h+='<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>'+t("name")+'</th><th class="num">'+t("visits")+'</th><th>'+t("progress")+'</th><th class="num">'+t("lessons")+'</th><th>'+t("last")+'</th><th>'+t("reg")+'</th></tr></thead><tbody>';
   rows.forEach(function(u){
     var dc=doneCount(u);
     h+='<tr class="click" data-stu="'+keyOf(u.name)+'"><td><b>'+esc(u.name)+'</b></td><td class="num">'+u.visits+'</td><td><div style="display:flex;gap:8px;align-items:center"><div class="bar" style="width:80px"><div class="fill" style="width:'+pct(dc,LESSONS.length)+'%"></div></div>'+pct(dc,LESSONS.length)+'%</div></td><td class="num">'+dc+'/'+LESSONS.length+'</td><td>'+fmtDate(u.lastVisit)+'</td><td>'+fmtDate(u.created)+'</td></tr>';
   });
-  return h+'</table></div>'+(detail()||"")+'</div>';
+  h+='</tbody></table></div>';
+  h+=secDetail();
+  h+='</div>';
+  return h;
 }
-function detail(){
+function secDetail(){
   if(!detailId) return "";
   var u=DATA.filter(function(x){ return keyOf(x.name)===detailId; })[0];
   if(!u) return "";
   var done=LESSONS.filter(function(ls){ return u.done && u.done[ls[0]]; });
   var bm=Object.keys(u.marks||{}).filter(function(k){ return u.marks[k]; }).length;
-  var h='<div class="detail card" style="box-shadow:none;background:var(--accent-soft)"><h3 style="margin:0 0 6px">'+t("detail")+': '+esc(u.name)+' <span class="badge">'+t("visits")+' '+u.visits+'</span></h3>';
+  var h='<div class="card detail" style="margin-top:12px"><h3 style="margin:0 0 6px">'+t("detail")+': '+esc(u.name)+' <span class="badge">'+t("visits")+' '+u.visits+'</span></h3>';
   h+='<p class="small"><b>'+t("completedLessons")+' ('+done.length+'/'+LESSONS.length+'):</b></p><div class="chips">'+(done.length? done.map(function(ls){ return '<span class="badge ok">'+L(ls[1])+'</span>'; }).join("") : t("none"))+'</div>';
-  h+='<p class="small"><b>'+t("bookmarks")+':</b> '+bm+' · <b>'+t("lastLesson")+':</b> '+(u.last? L((LESSONS.filter(function(x){return x[0]===u.last;})[0]||["",{en:u.last,ar:u.last}])[1]) : t("none"))+'</p></div>';
+  var ll = u.last ? (LESSONS.filter(function(x){return x[0]===u.last;})[0]||null) : null;
+  h+='<p class="small"><b>'+t("bookmarks")+':</b> '+bm+' · <b>'+t("lastLesson")+':</b> '+(ll? L(ll[1]) : t("none"))+'</p></div>';
   return h;
 }
+function gate(){
+  return '<div class="gate"><div class="card"><h2 style="margin:0 0 4px;border:0">'+t("title")+'</h2><p class="muted small">'+t("sub")+'</p>'+
+  '<input id="pin" type="password" placeholder="'+t("pin")+'" autocomplete="current-password"><div class="err" id="perr"></div>'+
+  '<button class="btn" id="go" style="width:100%">'+t("unlock")+'</button></div></div>';
+}
+/* ---------- render ---------- */
 function render(){
   document.documentElement.lang=lang; document.documentElement.dir=lang==="ar"?"rtl":"ltr";
   document.getElementById("langBtn").textContent = lang==="ar"?"EN":"العربية";
   document.getElementById("bTitle").textContent=t("title"); document.getElementById("bSub").textContent=t("sub");
-  document.getElementById("refreshBtn").title=t("refresh"); document.getElementById("csvBtn").textContent="⬇ CSV"; document.getElementById("lockBtn").title=t("lock");
+  document.getElementById("refreshBtn").title=t("refresh"); document.getElementById("lockBtn").title=t("lock");
   var v=document.getElementById("view");
   var unlocked=false; try{ unlocked=sessionStorage.getItem("tf_pin")==="1"; }catch(e){}
   ["refreshBtn","csvBtn","lockBtn"].forEach(function(id){ document.getElementById(id).hidden=!unlocked; });
   if(!unlocked){
     v.innerHTML=gate();
-    var act=function(){ var val=document.getElementById("pin").value;
-      if(val===TEACHER_PIN){ try{sessionStorage.setItem("tf_pin","1");}catch(e){} load(function(ok){ render(); }); }
-      else document.getElementById("perr").textContent=t("wrong"); };
+    var act=function(){ if(document.getElementById("pin").value===TEACHER_PIN){ try{sessionStorage.setItem("tf_pin","1");}catch(e){} load(function(){ render(); }); } else { document.getElementById("perr").textContent=t("wrong"); } };
     document.getElementById("go").onclick=act;
     document.getElementById("pin").onkeydown=function(e){ if(e.key==="Enter") act(); };
     return;
   }
-  if(DATA===null){ v.innerHTML='<div class="card"><p style="color:var(--warn)">'+t("err")+'</p><button class="btn" id="retry">'+t("retry")+'</button></div>'; document.getElementById("retry").onclick=function(){ load(function(){ render(); }); }; return; }
-  v.innerHTML = stats() + lessonBars() + table();
-  var fq=document.getElementById("fq"); if(fq) fq.oninput=function(){ filterQ=fq.value.toLowerCase(); var w=document.getElementById("stuWrap"); document.querySelector("#view .card:last-child").outerHTML = table(); var nf=document.getElementById("fq"); nf.focus(); nf.selectionStart=nf.selectionEnd=nf.value.length; };
-  document.querySelectorAll("[data-stu]").forEach(function(tr){ tr.onclick=function(){ detailId = (detailId===tr.getAttribute("data-stu"))? null : tr.getAttribute("data-stu"); document.querySelector("#view .card:last-child").outerHTML = table(); }; });
+  if(DATA===null){
+    v.innerHTML='<div class="card"><p style="color:var(--warn)">'+t("err")+'</p><button class="btn" id="retry">'+t("retry")+'</button></div>';
+    document.getElementById("retry").onclick=function(){ load(function(){ render(); }); };
+    return;
+  }
+  v.innerHTML = secStats() + secBars() + secTable();
+  /* layout self-check: stats row must hold exactly 5 cards and view must have 5 top children */
+  var okShape = v.children.length===5 && v.querySelectorAll(".statsrow > .card").length===5;
+  if(!okShape){
+    var bn=document.createElement("div"); bn.className="banner"; bn.textContent=t("corrupt");
+    v.insertBefore(bn, v.firstChild);
+  }
+  var fq=document.getElementById("fq");
+  if(fq) fq.oninput=function(){ filterQ=fq.value.toLowerCase(); secTableRefresh(); };
+  document.querySelectorAll("[data-stu]").forEach(function(tr){
+    tr.onclick=function(){ var k=tr.getAttribute("data-stu"); detailId = (detailId===k)? null : k; secTableRefresh(); };
+  });
+}
+function secTableRefresh(){
+  var y=window.scrollY; render(); window.scrollTo(0,y);
 }
 /* ---------- csv ---------- */
 function exportCSV(){
@@ -195,7 +219,7 @@ function exportCSV(){
   var lines=[head.join(",")];
   DATA.forEach(function(u){
     var done=LESSONS.filter(function(ls){ return u.done && u.done[ls[0]]; }).map(function(ls){ return ls[0]; });
-    lines.push([ '"'+String(u.name).replace(/"/g,'""')+'"', u.visits, pct(done.length,LESSONS.length), done.length, u.lastVisit||"", u.created||"", '"'+done.join(";")+'"' ].join(","));
+    lines.push([ '"'+String(u.name).replace(/"/g,'""')+'"', u.visits, pct(done.length,LESSONS.length), done.length, fmtDate(u.lastVisit), fmtDate(u.created), '"'+done.join(";")+'"' ].join(","));
   });
   var blob=new Blob(["\ufeff"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
   var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="FIN211_students.csv"; a.click();
