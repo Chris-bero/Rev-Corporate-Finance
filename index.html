@@ -135,8 +135,9 @@ table.tbl{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
 .ex{border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
 .ex .exh{background:var(--gold-soft);color:var(--gold);font-weight:700;font-size:13px;padding:9px 15px;border-bottom:1px solid var(--line)}
 .ex .exb{padding:12px 16px;font-size:14px}
-.ex .step{margin:7px 0}
-.ex .step b{color:var(--accent);display:inline-block;min-width:96px}
+.ex .step{display:flex;gap:10px;align-items:flex-start;margin:7px 0}
+.ex .step b{color:var(--accent);flex:0 0 92px}
+.ex .step .f{display:block;padding:6px 12px;margin:4px 0;width:fit-content}
 .ex .ans{background:var(--ok-soft);color:var(--ok);font-weight:800;border-radius:8px;padding:7px 12px;display:inline-block;margin-top:6px}
 /* ---------- concept map ---------- */
 .flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:12px 0}
@@ -326,7 +327,7 @@ Object.assign(window.DATA, {lessons:[
   g:[{en:"Case 1: net income $1,000,000; preferred dividends $100,000; 450,000 outstanding common shares.",ar:"حالة ١: صافي دخل 1,000,000$؛ أرباح ممتازة 100,000$؛ 450,000 سهم قائم."},{en:"Case 2 (bakery): net income ₹20,000; preferred dividends ₹2,000; 10,000 common shares.",ar:"حالة ٢ (مخبز): صافي دخل 20,000₹؛ أرباح ممتازة 2,000₹؛ 10,000 سهم."}],
   rq:{en:"Calculate EPS in each case.",ar:"احسب ربحية السهم في كل حالة."},f:"eps",
   st:[{en:"Case 1: EPS = (1,000,000 − 100,000) / 450,000",ar:"حالة ١: EPS = (1,000,000 − 100,000) ÷ 450,000"},{en:"Case 2: EPS = (20,000 − 2,000) / 10,000",ar:"حالة ٢: EPS = (20,000 − 2,000) ÷ 10,000"}],
-  an:{en:"Case 1: $2.00 per share · Case 2: ₹2.0 per share",ar:"حالة ١: 2.00$ للسهم · حالة ٢: 2.0₹ للسهم"},
+  an:{en:"Case 1: $2.00 per share · Case 2: ₹1.80 per share (the slides round it to ≈₹2.0)",ar:"حالة ١: 2.00$ للسهم · حالة ٢: 1.80₹ للسهم (الشرائح تقرّبها إلى ≈2.0₹)"},
   ip:{en:"Each share earns $2 of profit. The more shares issued, the lower the EPS achieved — which is why issuing too much equity hurts existing owners.",ar:"كل سهم يكسب 2 من الربح. كلما زادت الأسهم المصدرة انخفضت ربحية السهم — ولهذا فإن الإفراط في إصدار الملكية يضر الملاك الحاليين."}}],
  mistakes:[{en:"Using the profit-maximization goal instead of shareholder-wealth maximization (wealth = share price, the actual owner value).",ar:"استخدام هدف تعظيم الربح بدل تعظيم ثروة المساهمين (الثروة = سعر السهم، قيمة الملاك الفعلية)."},
   {en:"Forgetting to subtract preferred dividends before dividing by common shares in EPS.",ar:"نسيان طرح أرباح الأسهم الممتازة قبل القسمة على الأسهم العادية في EPS."}],
@@ -675,17 +676,17 @@ window.DATA.lessons = window.DATA.lessons.concat([
   g:[{en:"Probabilities: normal 0.5, boom 0.3, recession unknown. Returns — C: 0.02 / 0.10 / 0.15; T: 0.01 / 0.20 / 0.25 (recession/normal/boom).",ar:"الاحتمالات: طبيعي 0.5، ازدهار 0.3، ركود مجهول. العوائد — C: 0.02 / 0.10 / 0.15؛ T: 0.01 / 0.20 / 0.25 (ركود/طبيعي/ازدهار)."}],
   rq:{en:"Find the missing probability, both expected returns, and σ for each stock.",ar:"أوجد الاحتمال الناقص والعائد المتوقع لكل سهم وσ لكل منهما."},f:"er_ind",
   st:[{en:"P(recession) = 1 − 0.5 − 0.3 = 0.2",ar:"P(ركود) = 1 − 0.5 − 0.3 = 0.2"},
-      {en:"E(R)C = .2(.02)+.5(.10)+.3(.15) = .0024+.05+.045 = 0.0974 (9.7%)",ar:"E(R)C = .2(.02)+.5(.10)+.3(.15) = .0024+.05+.045 = 0.0974 (9.7%)"},
+      {en:"E(R)C = .2(.02)+.5(.10)+.3(.15) = .004+.05+.045 = 0.099 (9.9%)",ar:"E(R)C = .2(.02)+.5(.10)+.3(.15) = .004+.05+.045 = 0.099 (9.9%)"},
       {en:"E(R)T = .2(.01)+.5(.20)+.3(.25) = .002+.1+.075 = 0.177 (17.7%)",ar:"E(R)T = .2(.01)+.5(.20)+.3(.25) = .002+.1+.075 = 0.177 (17.7%)"},
-      {en:"σ²C = .2(.02−.097)² + .5(.10−.097)² + .3(.15−.097)² = .001198+.00000264+.000828 = .002028 → σC = 0.045",ar:"σ²C = .2(.02−.097)² + .5(.10−.097)² + .3(.15−.097)² = .001198+.00000264+.000828 = .002028 ← σC = 0.045"},
+      {en:"σ²C = .2(.02−.099)² + .5(.10−.099)² + .3(.15−.099)² = .0012482+.0000005+.0007803 = .002029 → σC = 0.045",ar:"σ²C = .2(.02−.099)² + .5(.10−.099)² + .3(.15−.099)² = .0012482+.0000005+.0007803 = .002029 ← σC = 0.045"},
       {en:"σ²T = .007441 → σT = 0.0863",ar:"σ²T = .007441 ← σT = 0.0863"}],
-  an:{en:"E(R): C 9.7%, T 17.7% · σ: C 4.5%, T 8.63%",ar:"العائد المتوقع: C 9.7% وT 17.7% · σ: C 4.5% وT 8.63%"},
+  an:{en:"E(R): C 9.9%, T 17.7% · σ: C 4.5%, T 8.63%",ar:"العائد المتوقع: C 9.9% وT 17.7% · σ: C 4.5% وT 8.63%"},
   ip:{en:"T offers almost double the expected return but also almost double the total risk — the risk–return trade-off in one table.",ar:"T يمنح ضعف العائد المتوقع تقريبًا لكن بضعف المخاطر الكلية تقريبًا أيضًا — مقايضة المخاطرة والعائد في جدول واحد."}}],
- mistakes:[{en:"Leaving probabilities that do not sum to 1 — the missing state's probability is 1 minus the rest.",ar:"ترك احتمالات لا تجمع إلى 1 — احتمال الحالة الناقصة هو 1 ناقص الباقي."},{en:"Forgetting to square the deviations, or to weight them by Pi.",ar:"نسيان تربيع الانحرافات أو ترجيحها بـ Pi."},{en:"Calling σ 'systematic risk' — σ is total risk; systematic risk is beta.",ar:"تسمية σ «مخاطر نظامية» — σ مخاطر كلية؛ والنظامية هي بيتا."}],
+ mistakes:[{en:"Slide typo alert: the printed product 0.0024 for the recession state must be 0.2 × 0.02 = 0.004, so E(R) of C is 9.9% (σ stays ≈4.5%).",ar:"تنبيه خطأ مطبعي في الشرائح: الناتج المطبوع 0.0024 لحالة الركود ينبغي أن يكون 0.2 × 0.02 = 0.004، لذا E(R) للسهم C هو 9.9% (وσ تبقى ≈4.5%)."},{en:"Leaving probabilities that do not sum to 1 — the missing state's probability is 1 minus the rest.",ar:"ترك احتمالات لا تجمع إلى 1 — احتمال الحالة الناقصة هو 1 ناقص الباقي."},{en:"Forgetting to square the deviations, or to weight them by Pi.",ar:"نسيان تربيع الانحرافات أو ترجيحها بـ Pi."},{en:"Calling σ 'systematic risk' — σ is total risk; systematic risk is beta.",ar:"تسمية σ «مخاطر نظامية» — σ مخاطر كلية؛ والنظامية هي بيتا."}],
  dist:[],map:[{en:"States of nature & probabilities",ar:"حالات الطبيعة واحتمالاتها"},{en:"E(R) = Σ Pi·Ri",ar:"E(R) = Σ Pi·Ri"},{en:"Deviations (Ri − E(R))",ar:"الانحرافات (Ri − E(R))"},{en:"σ² then σ = total risk",ar:"σ² ثم σ = المخاطر الكلية"}],
  sum:{ideas:[{en:"E(R) = Σ Pi Ri; probabilities sum to 1.",ar:"E(R) = Σ Pi Ri؛ والاحتمالات تجمع إلى 1."},{en:"σ² = Σ Pi (Ri − E(R))²; σ = √σ² = total risk.",ar:"σ² = Σ Pi (Ri − E(R))²؛ وσ = √σ² = المخاطر الكلية."},{en:"Risk-free: expected = actual (T-bills).",ar:"الخالي من المخاطر: المتوقع = الفعلي (أذون الخزانة)."}],
   terms:[{en:"Expected return",ar:"العائد المتوقع"},{en:"Variance",ar:"التباين"},{en:"Standard deviation",ar:"الانحراف المعياري"}],f:["er_ind","var_sd"],
-  rem:[{en:"C: 9.7% & 4.5% · T: 17.7% & 8.63%.",ar:"C: 9.7% و4.5% · T: 17.7% و8.63%."}],
+  rem:[{en:"C: 9.9% & 4.5% · T: 17.7% & 8.63%.",ar:"C: 9.9% و4.5% · T: 17.7% و8.63%."}],
   exam:[{en:"State-table computations of E(R) and σ are standard quiz material.",ar:"حسابات جداول الحالات لـ E(R) وσ مادة اختبارات قياسية."}]}},
 {id:"l12",ch:"c6",mins:15,title:{en:"Portfolios: Return, Risk & Beta",ar:"المحافظ: العائد والمخاطرة وبيتا"},
  desc:{en:"Portfolio weights and expected return, the two-asset standard deviation, diversification, and portfolio beta.",ar:"أوزان المحفظة وعائدها المتوقع، والانحراف المعياري لأصلين، والتنويع، وبيتا المحفظة."},
@@ -781,7 +782,7 @@ window.DATA.lessons = window.DATA.lessons.concat([
   rq:{en:"Compute each value.",ar:"احسب كل قيمة."},f:"fv_comp",
   st:[{en:"Simple FV: 11,500 / 32,000 / 5,450 · Simple PV: 10,434.78 / 16,129.03 / 6,779.66",ar:"بسيط FV: 11,500 / 32,000 / 5,450 · بسيط PV: 10,434.78 / 16,129.03 / 6,779.66"},
       {en:"Compound FV: 11,576.25 / 22,039.92 / 89,542.4 · Compound PV: 12,340 / 25,188 / 4,631.93",ar:"مركب FV: 11,576.25 / 22,039.92 / 89,542.4 · مركب PV: 12,340 / 25,188 / 4,631.93"},
-      {en:"Annuity: FV = 5,000 × 5.5256 = 27,628 · PV = 5,000 × 4.3298 = 21,647.8",ar:"دفعات: FV = 5,000 × 5.5256 = 27,628 · PV = 5,000 × 4.3298 = 21,647.8"}],
+      {en:"Annuity: FV = 5,000 × 5.5256 = 27,628 · PV = 5,000 × 4.32948 = 21,647.4",ar:"دفعات: FV = 5,000 × 5.5256 = 27,628 · PV = 5,000 × 4.32948 = 21,647.4"}],
   an:{en:"All values as listed above.",ar:"كل القيم كما ذُكرت أعلاه."},
   ip:{en:"Compare 10,000 at 5% for 3 years: simple 11,500 vs compound 11,576.25 — compounding is interest on interest.",ar:"قارن 10,000 عند 5% لثلاث سنين: بسيط 11,500 مقابل مركب 11,576.25 — التركيب فائدة على فائدة."}}],
  mistakes:[{en:"Using the simple formula when the question says compound (or vice versa).",ar:"استخدام المعادلة البسيطة حين يقول السؤال مركبة (أو العكس)."},{en:"Dropping the minus sign in the annuity PV exponent (1 + r)^−n.",ar:"إسقاط إشارة السالب في أس القيمة الحالية للدفعات (1 + r)^−n."},{en:"Treating payments as beginning-of-year when the course uses end-of-year (ordinary annuity).",ar:"معاملة الدفعات كبداية السنة بينما يستخدم المقرر نهاية السنة (دفعات عادية)."}],
@@ -820,18 +821,18 @@ window.DATA.lessons = window.DATA.lessons.concat([
   g:[{en:"8% coupon, $1,000 par, market price $700; 6 months since last payment. Floating loan: LIBOR + 0.25, cap 2.5, floor 1.75; week-1 LIBOR 1.98%.",ar:"كوبون 8% واسمي 1,000$ وسعر سوق 700$؛ ومضى 6 شهور على آخر دفعة. قرض عائم: LIBOR + 0.25، سقف 2.5 وأرضية 1.75؛ وLIBOR الأسبوع الأول 1.98%."}],
   rq:{en:"Compute current yield, accrued interest, and weeks 2–4 floating rates.",ar:"احسب العائد الجاري والفائدة المستحقة ومعدلات الأسابيع ٢–٤."},f:"cur_yield",
   st:[{en:"Current yield = 80/700 = 11.4%",ar:"العائد الجاري = 80÷700 = 11.4%"},{en:"Accrued = 6/12 × 80 = $40",ar:"المستحقة = 6÷12 × 80 = 40$"},{en:"wk2 = 1.98+0.25 = 2.23% · wk3 = 1.66+0.25 = 1.91% · wk4 = 1.52+0.25 = 1.77%",ar:"أسبوع٢ = 1.98+0.25 = 2.23% · أسبوع٣ = 1.66+0.25 = 1.91% · أسبوع٤ = 1.52+0.25 = 1.77%"}],
-  an:{en:"11.4% · $40 · 2.23% / 1.91% / 1.77% (full table through wk10: 1.60, 1.85, 1.88, 1.92, 2.13, 2.18).",ar:"11.4% · 40$ · 2.23% / 1.91% / 1.77% (الجدول كاملًا حتى أسبوع١٠: 1.60، 1.85، 1.88، 1.92، 2.13، 2.18)."},
+  an:{en:"11.4% · $40 · 2.23% / 1.91% / 1.77% (full table through wk10: 1.75 — floor applied, 1.85, 1.88, 1.92, 2.13, 2.18).",ar:"11.4% · 40$ · 2.23% / 1.91% / 1.77% (الجدول كاملًا حتى أسبوع١٠: 1.75 — تطبيق الأرضية، 1.85، 1.88، 1.92، 2.13، 2.18)."},
   ip:{en:"A cheap price lifts the current yield above the coupon; accrued interest belongs to the seller at trade.",ar:"السعر الرخيص يرفع العائد الجاري فوق الكوبون؛ والفائدة المستحقة من حق البائع عند التداول."}},
   {ti:{en:"Bond values at three yields",ar:"قيم السند عند ثلاثة عوائد"},
   g:[{en:"Par $1,000; annual coupon $120 (12%); 5-year maturity. Required yields: 12%, 15%, 9%. Plus table: (7% coupon, rm 5%, 3yr), (8%, 10%, 4yr), (6%, 7%, 5yr).",ar:"اسمي 1,000$؛ كوبون سنوي 120$ (12%)؛ استحقاق 5 سنين. العوائد المطلوبة: 12% و15% و9%. إضافة للجدول: (كوبون 7%، rm 5%، 3 سنين)، (8%، 10%، 4)، (6%، 7%، 5)."}],
   rq:{en:"Value the bond in each case and classify par/discount/premium.",ar:"قيّم السند في كل حالة وصنفه اسميًا/بخصم/بعلاوة."},f:"bond_val",
   st:[{en:"12%: 120×3.6048 + 1000×0.5674 = 432.576 + 567.427 = 1,000",ar:"12%: 120×3.6048 + 1000×0.5674 = 432.576 + 567.427 = 1,000"},
-      {en:"15%: 402.264 + 497.77 = 899.441 (discount)",ar:"15%: 402.264 + 497.77 = 899.441 (بخصم)"},
+      {en:"15%: 402.259 + 497.177 = 899.44 (discount)",ar:"15%: 402.259 + 497.177 = 899.44 (بخصم)"},
       {en:"9%: 466.758 + 649.93 = 1,116.68 (premium)",ar:"9%: 466.758 + 649.93 = 1,116.68 (بعلاوة)"},
       {en:"Table: 1,054.465 / 936.6027 / 958.998",ar:"الجدول: 1,054.465 / 936.6027 / 958.998"}],
   an:{en:"1,000 (par) · 899.44 (discount) · 1,116.68 (premium); table as listed.",ar:"1,000 (اسمي) · 899.44 (خصم) · 1,116.68 (علاوة)؛ والجدول كما ذُكر."},
   ip:{en:"Required yield and price move in opposite directions — the see-saw of bond markets.",ar:"العائد المطلوب والسعر يتحركان في اتجاهين متعاكسين — أرجوحة أسواق السندات."}}],
- mistakes:[{en:"Discounting only the coupons and forgetting the PV of par.",ar:"خصم الكوبونات فقط ونسيان القيمة الحالية للاسمي."},{en:"Discounting at the coupon rate instead of the market's required yield.",ar:"الخصم بمعدل الكوبون بدل العائد المطلوب سوقيًا."},{en:"Reversing the premium/discount logic (r &gt; coupon ⇒ discount, not premium).",ar:"عكس منطق العلاوة/الخصم (r &gt; الكوبون ← خصم وليس علاوة)."}],
+ mistakes:[{en:"Discounting only the coupons and forgetting the PV of par.",ar:"خصم الكوبونات فقط ونسيان القيمة الحالية للاسمي."},{en:"Discounting at the coupon rate instead of the market's required yield.",ar:"الخصم بمعدل الكوبون بدل العائد المطلوب سوقيًا."},{en:"Reversing the premium/discount logic (r &gt; coupon ⇒ discount, not premium).",ar:"عكس منطق العلاوة/الخصم (r &gt; الكوبون ← خصم وليس علاوة)."},{en:"Forgetting the cap/floor on floating rates: week 5 computes 1.35+0.25 = 1.60 but the 1.75 minimum floor raises it to 1.75.",ar:"نسيان السقف/الأرضية في الأسعار العائمة: الأسبوع 5 يحسب 1.35+0.25 = 1.60 لكن الأرضية 1.75 ترفعه إلى 1.75."}],
  dist:[{ti:{en:"Loans vs Bonds",ar:"القروض مقابل السندات"},c1:{en:"Loans",ar:"قروض"},c2:{en:"Bonds",ar:"سندات"},
   rows:[[{en:"Private debt, two parties",ar:"دين خاص، طرفان"},{en:"Public debt, traded",ar:"دين عام، قابل للتداول"}],
         [{en:"Speed, lower cost, flexibility",ar:"سرعة وتكلفة أقل ومرونة"},{en:"Wider investor base, longer maturities",ar:"قاعدة مستثمرين أوسع وآجال أطول"}],
@@ -1219,10 +1220,10 @@ function fcard(f, compact, q){
   return h+'</div>';
 }
 function exCard(x){
-  var h = '<div class="ex"><div class="exh">'+t("examples")+': '+L(x.ti)+'</div><div class="exb">';
+  var h = '<div class="ex"><div class="exh">'+(state.lang==="ar"?"مثال محلول":"Worked example")+' · '+L(x.ti)+'</div><div class="exb">';
   h += '<div class="step"><b>'+t("given")+':</b> '+x.g.map(L).join(" ")+'</div>';
   h += '<div class="step"><b>'+t("required")+':</b> '+L(x.rq)+'</div>';
-  if(x.f && FMAP[x.f]) h += '<div class="step"><b>'+t("formula")+':</b> <span class="f" style="display:inline-block;padding:4px 12px;margin:2px">'+FMAP[x.f].disp+'</span></div>';
+  if(x.f && FMAP[x.f]) h += '<div class="step"><b>'+t("formula")+':</b><span class="f">'+FMAP[x.f].disp+'</span></div>';
   h += '<div class="step"><b>'+t("calculation")+':</b><ul>'+x.st.map(function(s){return "<li>"+L(s)+"</li>";}).join("")+'</ul></div>';
   h += '<div class="ans">'+t("answer")+': '+L(x.an)+'</div>';
   h += '<div class="step" style="margin-top:8px"><b>'+t("interp")+':</b> '+L(x.ip)+'</div>';
@@ -1678,7 +1679,7 @@ trySession(); applyLang(); applyTheme(); render();
 <h3>Earnings per share</h3>
 <div class="f"><b>EPS</b> = <span class="frac"><span class="top">Net income − Preferred dividends</span><span class="bot">Outstanding common shares</span></span></div>
 <details><summary>Example — EPS</summary>
-  NI 1,000,000; pref. div. 100,000; 450,000 shares → EPS = 900,000/450,000 = <b>$2.00</b>. Bakery: (20,000−2,000)/10,000 = <b>2.0</b>. More shares issued ⇒ lower EPS.
+  NI 1,000,000; pref. div. 100,000; 450,000 shares → EPS = 900,000/450,000 = <b>$2.00</b>. Bakery: (20,000−2,000)/10,000 = <b>1.8</b> (slides round to ≈2.0). More shares issued ⇒ lower EPS.
 </details>
 </section>
 
@@ -1828,7 +1829,7 @@ trySession(); applyLang(); applyTheme(); render();
 <h3>Individual asset</h3>
 <div class="f">E(R) = Σ P<sub>i</sub> R<sub>i</sub> &nbsp;&nbsp;|&nbsp;&nbsp; σ² = Σ P<sub>i</sub>(R<sub>i</sub> − E(R))² &nbsp;&nbsp;|&nbsp;&nbsp; σ = √σ²</div>
 <details><summary>Example — states of nature (P: recession .2, normal .5, boom .3)</summary>
-  Stock C: E(R) = .2(.02)+.5(.10)+.3(.15) = <b>9.7%</b>; σ² = 0.002028 → σ = <b>4.5%</b>. Stock T: E(R) = <b>17.7%</b>. Total risk = σ; systematic risk = β (C: σ20%/β1.25 vs K: σ30%/β0.95 → K more total risk, C more systematic risk &amp; higher expected return).
+  Stock C: E(R) = .2(.02)+.5(.10)+.3(.15) = <b>9.9%</b>; σ² = 0.002029 → σ = <b>4.5%</b>. Stock T: E(R) = <b>17.7%</b>. Total risk = σ; systematic risk = β (C: σ20%/β1.25 vs K: σ30%/β0.95 → K more total risk, C more systematic risk &amp; higher expected return).
 </details>
 <h3>Portfolio return &amp; weights</h3>
 <div class="f">w<sub>i</sub> = <span class="frac"><span class="top">Investment<sub>i</sub></span><span class="bot">Total portfolio</span></span> (Σw = 1) &nbsp;&nbsp;|&nbsp;&nbsp; E(R<sub>p</sub>) = Σ w<sub>i</sub> E(R<sub>i</sub>)</div>
@@ -1869,7 +1870,7 @@ trySession(); applyLang(); applyTheme(); render();
 <p class="where">PV 100 at 6% for 5 years → FV 133.8. FV table (PV, r, n → FV): (10,000, 5%, 3) → 11,576.25 · (15,000, 8%, 5) → 22,039.92 · (50,000, 6%, 10) → 89,542.4. PV table (FV, r, n → PV): (15,000, 5%, 4) → 12,340 · (30,000, 6%, 3) → 25,188 · (10,000, 8%, 10) → 4,631.93.</p>
 <h3>Annuities (end-of-year payments)</h3>
 <div class="f">FV = PMT × <span class="frac"><span class="top">(1 + r)<sup>n</sup> − 1</span><span class="bot">r</span></span> &nbsp;&nbsp;|&nbsp;&nbsp; PV = PMT × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span></div>
-<p class="where">PMT = 5,000 paid at the end of each year for 5 years, at r = 5%: FV = 5,000 × 5.5256 = <b>27,628</b>; PV = 5,000 × 4.3298 = <b>21,647.8</b>.</p>
+<p class="where">PMT = 5,000 paid at the end of each year for 5 years, at r = 5%: FV = 5,000 × 5.5256 = <b>27,628</b>; PV = 5,000 × 4.32948 = <b>21,647.4</b>.</p>
 <h3>Bond terms</h3>
 <ul class="cols">
   <li><b>Loans</b> = private debt (two parties). Pros: speed · reduced costs · financing flexibility. Cons: interest cost higher than bonds · restrictive covenants · possible future SEC registration. <b>Bonds</b> = public debt, traded in bond markets.</li>
@@ -1879,12 +1880,12 @@ trySession(); applyLang(); applyTheme(); render();
   <li><b>Floating rate</b> = index (LIBOR) of prior period + spread, subject to cap &amp; floor.</li>
 </ul>
 <div class="f">Current yield = <span class="frac"><span class="top">Annual interest</span><span class="bot">Current market price</span></span> &nbsp;|&nbsp; Accrued interest = <span class="frac"><span class="top">Months since payment</span><span class="bot">12</span></span> × Annual coupon</div>
-<p class="where">8% coupon, $1,000 par, price $700 → 80/700 = <b>11.4%</b>; 6 months accrued = 6/12 × 80 = <b>$40</b>. Floating loan (LIBOR+0.25, cap 2.5, floor 1.75): wk2 2.23 · wk3 1.91 · wk4 1.77 · wk5 1.60 · wk6 1.85 · wk7 1.88 · wk8 1.92 · wk9 2.13 · wk10 2.18.</p>
+<p class="where">8% coupon, $1,000 par, price $700 → 80/700 = <b>11.4%</b>; 6 months accrued = 6/12 × 80 = <b>$40</b>. Floating loan (LIBOR+0.25, cap 2.5, floor 1.75): wk2 2.23 · wk3 1.91 · wk4 1.77 · wk5 1.75 (floor) · wk6 1.85 · wk7 1.88 · wk8 1.92 · wk9 2.13 · wk10 2.18.</p>
 <h3>Bond value ★</h3>
 <div class="f">B<sub>0</sub> = C × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span> + <span class="frac"><span class="top">Par</span><span class="bot">(1 + r)<sup>n</sup></span></span></div>
 <p class="where">= PV of coupon annuity + PV of par. C = coupon rate × par.</p>
 <details><summary>Examples</summary>
-  12% required, $120 coupon, 5yr → 432.576 + 567.427 = <b>1,000</b> (par). 15% → 402.264 + 497.77 = <b>899.44</b> (discount). 9% → 466.758 + 649.93 = <b>1,116.68</b> (premium). Coupon 8% with required yield 11.4% over 10 years → 458 + 339 = <b>803</b>. Table (coupon rate, required yield r, years → bond value): (7%, 5%, 3) → 1,054.47 · (8%, 10%, 4) → 936.60 · (6%, 7%, 5) → 959.00.<br>
+  12% required, $120 coupon, 5yr → 432.576 + 567.427 = <b>1,000</b> (par). 15% → 402.259 + 497.177 = <b>899.44</b> (discount). 9% → 466.758 + 649.93 = <b>1,116.68</b> (premium). Coupon 8% with required yield 11.4% over 10 years → 463.4 + 339.7 = <b>803.1</b>. Table (coupon rate, required yield r, years → bond value): (7%, 5%, 3) → 1,054.47 · (8%, 10%, 4) → 936.60 · (6%, 7%, 5) → 959.00.<br>
   r &gt; coupon ⇒ discount · r = coupon ⇒ par · r &lt; coupon ⇒ premium.
 </details>
 <p><span class="rule ok">Accept/buy: DCF value &gt; market price (undervalued)</span><span class="rule no">Reject: DCF value &lt; market price (overvalued)</span></p>

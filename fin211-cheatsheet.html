@@ -140,7 +140,7 @@
 <h3>Earnings per share</h3>
 <div class="f"><b>EPS</b> = <span class="frac"><span class="top">Net income − Preferred dividends</span><span class="bot">Outstanding common shares</span></span></div>
 <details><summary>Example — EPS</summary>
-  NI 1,000,000; pref. div. 100,000; 450,000 shares → EPS = 900,000/450,000 = <b>$2.00</b>. Bakery: (20,000−2,000)/10,000 = <b>2.0</b>. More shares issued ⇒ lower EPS.
+  NI 1,000,000; pref. div. 100,000; 450,000 shares → EPS = 900,000/450,000 = <b>$2.00</b>. Bakery: (20,000−2,000)/10,000 = <b>1.8</b> (slides round to ≈2.0). More shares issued ⇒ lower EPS.
 </details>
 </section>
 
@@ -290,7 +290,7 @@
 <h3>Individual asset</h3>
 <div class="f">E(R) = Σ P<sub>i</sub> R<sub>i</sub> &nbsp;&nbsp;|&nbsp;&nbsp; σ² = Σ P<sub>i</sub>(R<sub>i</sub> − E(R))² &nbsp;&nbsp;|&nbsp;&nbsp; σ = √σ²</div>
 <details><summary>Example — states of nature (P: recession .2, normal .5, boom .3)</summary>
-  Stock C: E(R) = .2(.02)+.5(.10)+.3(.15) = <b>9.7%</b>; σ² = 0.002028 → σ = <b>4.5%</b>. Stock T: E(R) = <b>17.7%</b>. Total risk = σ; systematic risk = β (C: σ20%/β1.25 vs K: σ30%/β0.95 → K more total risk, C more systematic risk &amp; higher expected return).
+  Stock C: E(R) = .2(.02)+.5(.10)+.3(.15) = <b>9.9%</b>; σ² = 0.002029 → σ = <b>4.5%</b>. Stock T: E(R) = <b>17.7%</b>. Total risk = σ; systematic risk = β (C: σ20%/β1.25 vs K: σ30%/β0.95 → K more total risk, C more systematic risk &amp; higher expected return).
 </details>
 <h3>Portfolio return &amp; weights</h3>
 <div class="f">w<sub>i</sub> = <span class="frac"><span class="top">Investment<sub>i</sub></span><span class="bot">Total portfolio</span></span> (Σw = 1) &nbsp;&nbsp;|&nbsp;&nbsp; E(R<sub>p</sub>) = Σ w<sub>i</sub> E(R<sub>i</sub>)</div>
@@ -331,7 +331,7 @@
 <p class="where">PV 100 at 6% for 5 years → FV 133.8. FV table (PV, r, n → FV): (10,000, 5%, 3) → 11,576.25 · (15,000, 8%, 5) → 22,039.92 · (50,000, 6%, 10) → 89,542.4. PV table (FV, r, n → PV): (15,000, 5%, 4) → 12,340 · (30,000, 6%, 3) → 25,188 · (10,000, 8%, 10) → 4,631.93.</p>
 <h3>Annuities (end-of-year payments)</h3>
 <div class="f">FV = PMT × <span class="frac"><span class="top">(1 + r)<sup>n</sup> − 1</span><span class="bot">r</span></span> &nbsp;&nbsp;|&nbsp;&nbsp; PV = PMT × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span></div>
-<p class="where">PMT = 5,000 paid at the end of each year for 5 years, at r = 5%: FV = 5,000 × 5.5256 = <b>27,628</b>; PV = 5,000 × 4.3298 = <b>21,647.8</b>.</p>
+<p class="where">PMT = 5,000 paid at the end of each year for 5 years, at r = 5%: FV = 5,000 × 5.5256 = <b>27,628</b>; PV = 5,000 × 4.32948 = <b>21,647.4</b>.</p>
 <h3>Bond terms</h3>
 <ul class="cols">
   <li><b>Loans</b> = private debt (two parties). Pros: speed · reduced costs · financing flexibility. Cons: interest cost higher than bonds · restrictive covenants · possible future SEC registration. <b>Bonds</b> = public debt, traded in bond markets.</li>
@@ -341,12 +341,12 @@
   <li><b>Floating rate</b> = index (LIBOR) of prior period + spread, subject to cap &amp; floor.</li>
 </ul>
 <div class="f">Current yield = <span class="frac"><span class="top">Annual interest</span><span class="bot">Current market price</span></span> &nbsp;|&nbsp; Accrued interest = <span class="frac"><span class="top">Months since payment</span><span class="bot">12</span></span> × Annual coupon</div>
-<p class="where">8% coupon, $1,000 par, price $700 → 80/700 = <b>11.4%</b>; 6 months accrued = 6/12 × 80 = <b>$40</b>. Floating loan (LIBOR+0.25, cap 2.5, floor 1.75): wk2 2.23 · wk3 1.91 · wk4 1.77 · wk5 1.60 · wk6 1.85 · wk7 1.88 · wk8 1.92 · wk9 2.13 · wk10 2.18.</p>
+<p class="where">8% coupon, $1,000 par, price $700 → 80/700 = <b>11.4%</b>; 6 months accrued = 6/12 × 80 = <b>$40</b>. Floating loan (LIBOR+0.25, cap 2.5, floor 1.75): wk2 2.23 · wk3 1.91 · wk4 1.77 · wk5 1.75 (floor) · wk6 1.85 · wk7 1.88 · wk8 1.92 · wk9 2.13 · wk10 2.18.</p>
 <h3>Bond value ★</h3>
 <div class="f">B<sub>0</sub> = C × <span class="frac"><span class="top">1 − (1 + r)<sup>−n</sup></span><span class="bot">r</span></span> + <span class="frac"><span class="top">Par</span><span class="bot">(1 + r)<sup>n</sup></span></span></div>
 <p class="where">= PV of coupon annuity + PV of par. C = coupon rate × par.</p>
 <details><summary>Examples</summary>
-  12% required, $120 coupon, 5yr → 432.576 + 567.427 = <b>1,000</b> (par). 15% → 402.264 + 497.77 = <b>899.44</b> (discount). 9% → 466.758 + 649.93 = <b>1,116.68</b> (premium). Coupon 8% with required yield 11.4% over 10 years → 458 + 339 = <b>803</b>. Table (coupon rate, required yield r, years → bond value): (7%, 5%, 3) → 1,054.47 · (8%, 10%, 4) → 936.60 · (6%, 7%, 5) → 959.00.<br>
+  12% required, $120 coupon, 5yr → 432.576 + 567.427 = <b>1,000</b> (par). 15% → 402.259 + 497.177 = <b>899.44</b> (discount). 9% → 466.758 + 649.93 = <b>1,116.68</b> (premium). Coupon 8% with required yield 11.4% over 10 years → 463.4 + 339.7 = <b>803.1</b>. Table (coupon rate, required yield r, years → bond value): (7%, 5%, 3) → 1,054.47 · (8%, 10%, 4) → 936.60 · (6%, 7%, 5) → 959.00.<br>
   r &gt; coupon ⇒ discount · r = coupon ⇒ par · r &lt; coupon ⇒ premium.
 </details>
 <p><span class="rule ok">Accept/buy: DCF value &gt; market price (undervalued)</span><span class="rule no">Reject: DCF value &lt; market price (overvalued)</span></p>
